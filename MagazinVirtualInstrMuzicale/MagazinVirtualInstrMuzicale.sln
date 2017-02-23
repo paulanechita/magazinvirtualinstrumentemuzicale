@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagazinVirtualInstrMuzicale", "MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale.csproj", "{24DBA76D-79F1-4C40-95DE-F95191A93F21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. MVIM", "MagazinVirtualInstrMuzicale\3. MVIM.csproj", "{24DBA76D-79F1-4C40-95DE-F95191A93F21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. MVIM.Domain", "MVIM.Domain\2. MVIM.Domain.csproj", "{942B4FC4-5647-4D74-9B0C-01FCD1933C97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. MVIM.DAL", "MVIM.DAL\1. MVIM.DAL.csproj", "{0BBFEC41-E14B-4AE8-872F-B753C5C792E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{24DBA76D-79F1-4C40-95DE-F95191A93F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24DBA76D-79F1-4C40-95DE-F95191A93F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24DBA76D-79F1-4C40-95DE-F95191A93F21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{942B4FC4-5647-4D74-9B0C-01FCD1933C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{942B4FC4-5647-4D74-9B0C-01FCD1933C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{942B4FC4-5647-4D74-9B0C-01FCD1933C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{942B4FC4-5647-4D74-9B0C-01FCD1933C97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BBFEC41-E14B-4AE8-872F-B753C5C792E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BBFEC41-E14B-4AE8-872F-B753C5C792E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BBFEC41-E14B-4AE8-872F-B753C5C792E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BBFEC41-E14B-4AE8-872F-B753C5C792E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

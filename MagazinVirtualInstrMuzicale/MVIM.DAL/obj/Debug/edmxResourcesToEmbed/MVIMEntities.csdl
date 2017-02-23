@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MVIMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Adresa">
+    <Key>
+      <PropertyRef Name="IdAdresa" />
+    </Key>
+    <Property Name="IdAdresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Strada" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Numar" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Oras" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Judet" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CodPostal" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Comanda" Relationship="Self.FK_Comanda_Adresa" FromRole="Adresa" ToRole="Comanda" />
+  </EntityType>
+  <EntityType Name="Categorie">
+    <Key>
+      <PropertyRef Name="IdCategorie" />
+    </Key>
+    <Property Name="IdCategorie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumeCategorie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Produs" Relationship="Self.CategorieProdus" FromRole="Categorie" ToRole="Produs" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="IdClient" />
+    </Key>
+    <Property Name="IdClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="Nume" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Prenume" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DataNasterii" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NumarTelefon" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Client_User" FromRole="Client" ToRole="User" />
+    <NavigationProperty Name="Comanda" Relationship="Self.FK_Comanda_Client" FromRole="Client" ToRole="Comanda" />
+    <NavigationProperty Name="Cos" Relationship="Self.FK_Cos_Client" FromRole="Client" ToRole="Cos" />
+  </EntityType>
+  <EntityType Name="Comanda">
+    <Key>
+      <PropertyRef Name="IdComanda" />
+    </Key>
+    <Property Name="IdComanda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdClient" Type="Int32" Nullable="false" />
+    <Property Name="IdAdresa" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdCodStatusComanda" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Adresa" Relationship="Self.FK_Comanda_Adresa" FromRole="Comanda" ToRole="Adresa" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Comanda_Client" FromRole="Comanda" ToRole="Client" />
+    <NavigationProperty Name="StatusComanda" Relationship="Self.FK_Comanda_StatusComanda" FromRole="Comanda" ToRole="StatusComanda" />
+    <NavigationProperty Name="ComandaProdus" Relationship="Self.FK_ComandaProdus_Comanda" FromRole="Comanda" ToRole="ComandaProdus" />
+  </EntityType>
+  <EntityType Name="ComandaProdus">
+    <Key>
+      <PropertyRef Name="IdComandaProdus" />
+    </Key>
+    <Property Name="IdComandaProdus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdComanda" Type="Int32" Nullable="false" />
+    <Property Name="IdProdus" Type="Int32" Nullable="false" />
+    <Property Name="NumeProdus" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PretProdus" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="DescriereProdus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cantitate" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Comanda" Relationship="Self.FK_ComandaProdus_Comanda" FromRole="ComandaProdus" ToRole="Comanda" />
+    <NavigationProperty Name="Produs" Relationship="Self.FK_ComandaProdus_Produs" FromRole="ComandaProdus" ToRole="Produs" />
+  </EntityType>
+  <EntityType Name="Cos">
+    <Key>
+      <PropertyRef Name="IdCos" />
+    </Key>
+    <Property Name="IdCos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdClient" Type="Int32" Nullable="false" />
+    <Property Name="IdCodStatusCos" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Cos_Client" FromRole="Cos" ToRole="Client" />
+    <NavigationProperty Name="StatusCos" Relationship="Self.FK_Cos_StatusCos" FromRole="Cos" ToRole="StatusCos" />
+    <NavigationProperty Name="CosProdus" Relationship="Self.FK_CosProdus_Cos" FromRole="Cos" ToRole="CosProdus" />
+  </EntityType>
+  <EntityType Name="PozaProdus">
+    <Key>
+      <PropertyRef Name="IdPozaProdus" />
+    </Key>
+    <Property Name="IdPozaProdus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProdus" Type="Int32" Nullable="false" />
+    <Property Name="Poza" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <NavigationProperty Name="Produs" Relationship="Self.FK_PozaProdus_Produs" FromRole="PozaProdus" ToRole="Produs" />
+  </EntityType>
+  <EntityType Name="Producator">
+    <Key>
+      <PropertyRef Name="IdProducator" />
+    </Key>
+    <Property Name="IdProducator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nume" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Produs" Relationship="Self.FK_Produs_Producator" FromRole="Producator" ToRole="Produs" />
+  </EntityType>
+  <EntityType Name="Produs">
+    <Key>
+      <PropertyRef Name="IdProdus" />
+    </Key>
+    <Property Name="IdProdus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProducator" Type="Int32" Nullable="false" />
+    <Property Name="NumeProdus" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PretProdus" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="DescriereProdus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ComandaProdus" Relationship="Self.FK_ComandaProdus_Produs" FromRole="Produs" ToRole="ComandaProdus" />
+    <NavigationProperty Name="PozaProdus" Relationship="Self.FK_PozaProdus_Produs" FromRole="Produs" ToRole="PozaProdus" />
+    <NavigationProperty Name="Producator" Relationship="Self.FK_Produs_Producator" FromRole="Produs" ToRole="Producator" />
+    <NavigationProperty Name="CosProdus" Relationship="Self.FK_CosProdus_Produs" FromRole="Produs" ToRole="CosProdus" />
+    <NavigationProperty Name="Categorie" Relationship="Self.CategorieProdus" FromRole="Produs" ToRole="Categorie" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rol1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_Rol" FromRole="Rol" ToRole="User" />
+  </EntityType>
+  <EntityType Name="StatusComanda">
+    <Key>
+      <PropertyRef Name="IdCodStatusComanda" />
+    </Key>
+    <Property Name="IdCodStatusComanda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DescriereStatusComanda" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Comanda" Relationship="Self.FK_Comanda_StatusComanda" FromRole="StatusComanda" ToRole="Comanda" />
+  </EntityType>
+  <EntityType Name="StatusCos">
+    <Key>
+      <PropertyRef Name="IdCodStatusCos" />
+    </Key>
+    <Property Name="IdCodStatusCos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DescriereStatusCos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Cos" Relationship="Self.FK_Cos_StatusCos" FromRole="StatusCos" ToRole="Cos" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Parola" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Client_User" FromRole="User" ToRole="Client" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK_User_Rol" FromRole="User" ToRole="Rol" />
+  </EntityType>
+  <EntityType Name="CosProdus">
+    <Key>
+      <PropertyRef Name="IdCos" />
+      <PropertyRef Name="IdProdus" />
+      <PropertyRef Name="Cantitate" />
+    </Key>
+    <Property Name="IdCos" Type="Int32" Nullable="false" />
+    <Property Name="IdProdus" Type="Int32" Nullable="false" />
+    <Property Name="Cantitate" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cos" Relationship="Self.FK_CosProdus_Cos" FromRole="CosProdus" ToRole="Cos" />
+    <NavigationProperty Name="Produs" Relationship="Self.FK_CosProdus_Produs" FromRole="CosProdus" ToRole="Produs" />
+  </EntityType>
+  <Association Name="FK_Comanda_Adresa">
+    <End Role="Adresa" Type="Self.Adresa" Multiplicity="1" />
+    <End Role="Comanda" Type="Self.Comanda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adresa">
+        <PropertyRef Name="IdAdresa" />
+      </Principal>
+      <Dependent Role="Comanda">
+        <PropertyRef Name="IdAdresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comanda_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Comanda" Type="Self.Comanda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="IdClient" />
+      </Principal>
+      <Dependent Role="Comanda">
+        <PropertyRef Name="IdClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cos_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Cos" Type="Self.Cos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="IdClient" />
+      </Principal>
+      <Dependent Role="Cos">
+        <PropertyRef Name="IdClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comanda_StatusComanda">
+    <End Role="StatusComanda" Type="Self.StatusComanda" Multiplicity="1" />
+    <End Role="Comanda" Type="Self.Comanda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusComanda">
+        <PropertyRef Name="IdCodStatusComanda" />
+      </Principal>
+      <Dependent Role="Comanda">
+        <PropertyRef Name="IdCodStatusComanda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComandaProdus_Comanda">
+    <End Role="Comanda" Type="Self.Comanda" Multiplicity="1" />
+    <End Role="ComandaProdus" Type="Self.ComandaProdus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comanda">
+        <PropertyRef Name="IdComanda" />
+      </Principal>
+      <Dependent Role="ComandaProdus">
+        <PropertyRef Name="IdComanda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComandaProdus_Produs">
+    <End Role="Produs" Type="Self.Produs" Multiplicity="1" />
+    <End Role="ComandaProdus" Type="Self.ComandaProdus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produs">
+        <PropertyRef Name="IdProdus" />
+      </Principal>
+      <Dependent Role="ComandaProdus">
+        <PropertyRef Name="IdProdus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cos_StatusCos">
+    <End Role="StatusCos" Type="Self.StatusCos" Multiplicity="1" />
+    <End Role="Cos" Type="Self.Cos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusCos">
+        <PropertyRef Name="IdCodStatusCos" />
+      </Principal>
+      <Dependent Role="Cos">
+        <PropertyRef Name="IdCodStatusCos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CosProdus_Cos">
+    <End Role="Cos" Type="Self.Cos" Multiplicity="1" />
+    <End Role="CosProdus" Type="Self.CosProdus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cos">
+        <PropertyRef Name="IdCos" />
+      </Principal>
+      <Dependent Role="CosProdus">
+        <PropertyRef Name="IdCos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PozaProdus_Produs">
+    <End Role="Produs" Type="Self.Produs" Multiplicity="1" />
+    <End Role="PozaProdus" Type="Self.PozaProdus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produs">
+        <PropertyRef Name="IdProdus" />
+      </Principal>
+      <Dependent Role="PozaProdus">
+        <PropertyRef Name="IdProdus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produs_Producator">
+    <End Role="Producator" Type="Self.Producator" Multiplicity="1" />
+    <End Role="Produs" Type="Self.Produs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producator">
+        <PropertyRef Name="IdProducator" />
+      </Principal>
+      <Dependent Role="Produs">
+        <PropertyRef Name="IdProducator" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CosProdus_Produs">
+    <End Role="Produs" Type="Self.Produs" Multiplicity="1" />
+    <End Role="CosProdus" Type="Self.CosProdus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produs">
+        <PropertyRef Name="IdProdus" />
+      </Principal>
+      <Dependent Role="CosProdus">
+        <PropertyRef Name="IdProdus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategorieProdus">
+    <End Role="Categorie" Type="Self.Categorie" Multiplicity="*" />
+    <End Role="Produs" Type="Self.Produs" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="MVIMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Adresa" EntityType="Self.Adresa" />
+    <EntitySet Name="Categorie" EntityType="Self.Categorie" />
+    <EntitySet Name="Client" EntityType="Self.Client" />
+    <EntitySet Name="Comanda" EntityType="Self.Comanda" />
+    <EntitySet Name="ComandaProdus" EntityType="Self.ComandaProdus" />
+    <EntitySet Name="Cos" EntityType="Self.Cos" />
+    <EntitySet Name="PozaProdus" EntityType="Self.PozaProdus" />
+    <EntitySet Name="Producator" EntityType="Self.Producator" />
+    <EntitySet Name="Produs" EntityType="Self.Produs" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" />
+    <EntitySet Name="StatusComanda" EntityType="Self.StatusComanda" />
+    <EntitySet Name="StatusCos" EntityType="Self.StatusCos" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="CosProdus" EntityType="Self.CosProdus" />
+    <AssociationSet Name="FK_Comanda_Adresa" Association="Self.FK_Comanda_Adresa">
+      <End Role="Adresa" EntitySet="Adresa" />
+      <End Role="Comanda" EntitySet="Comanda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_User" Association="Self.FK_Client_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comanda_Client" Association="Self.FK_Comanda_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Comanda" EntitySet="Comanda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cos_Client" Association="Self.FK_Cos_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Cos" EntitySet="Cos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comanda_StatusComanda" Association="Self.FK_Comanda_StatusComanda">
+      <End Role="StatusComanda" EntitySet="StatusComanda" />
+      <End Role="Comanda" EntitySet="Comanda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComandaProdus_Comanda" Association="Self.FK_ComandaProdus_Comanda">
+      <End Role="Comanda" EntitySet="Comanda" />
+      <End Role="ComandaProdus" EntitySet="ComandaProdus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComandaProdus_Produs" Association="Self.FK_ComandaProdus_Produs">
+      <End Role="Produs" EntitySet="Produs" />
+      <End Role="ComandaProdus" EntitySet="ComandaProdus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cos_StatusCos" Association="Self.FK_Cos_StatusCos">
+      <End Role="StatusCos" EntitySet="StatusCos" />
+      <End Role="Cos" EntitySet="Cos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CosProdus_Cos" Association="Self.FK_CosProdus_Cos">
+      <End Role="Cos" EntitySet="Cos" />
+      <End Role="CosProdus" EntitySet="CosProdus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PozaProdus_Produs" Association="Self.FK_PozaProdus_Produs">
+      <End Role="Produs" EntitySet="Produs" />
+      <End Role="PozaProdus" EntitySet="PozaProdus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produs_Producator" Association="Self.FK_Produs_Producator">
+      <End Role="Producator" EntitySet="Producator" />
+      <End Role="Produs" EntitySet="Produs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CosProdus_Produs" Association="Self.FK_CosProdus_Produs">
+      <End Role="Produs" EntitySet="Produs" />
+      <End Role="CosProdus" EntitySet="CosProdus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Rol" Association="Self.FK_User_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="CategorieProdus" Association="Self.CategorieProdus">
+      <End Role="Categorie" EntitySet="Categorie" />
+      <End Role="Produs" EntitySet="Produs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
