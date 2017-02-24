@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MagazinVirtualInstrMuzicale.Models;
+using MVIM.Domain.Interfaces;
+using MVIM.Domain.Managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +11,27 @@ namespace MagazinVirtualInstrMuzicale.Controllers
 {
     public class ContNouController : Controller
     {
-        // GET: ContNou
-        public ActionResult Index()
+        private IUserManager _userManager = new UserManager();
+
+        [HttpGet]
+        public ActionResult InregistrareUser()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult InregistrareUser(ContNouModel userNou)
+        {
+            if (userNou.Parola == userNou.ConfirmaParola)
+            {
+                var isSaved = _userManager.SaveUser(userNou.Nume, userNou.Prenume, userNou.DataNasterii, userNou.Email, userNou.NumarTelefon, userNou.Username, userNou.Parola);
+                if (isSaved)
+                    return RedirectToAction("Login", "Login");
+                else
+                    return View();
+            }
+            else
+                return View();
         }
     }
 }

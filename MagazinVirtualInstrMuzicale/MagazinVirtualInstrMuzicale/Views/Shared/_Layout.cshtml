@@ -21,8 +21,18 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav meniuLogin">
-                    <li><a href="~/Controllers/Login">Login</a></li>
-                    <li><a href="~/Controllers/ContNou">Cont Nou</a></li>
+                    @{
+                        if (Session["UserLogat"] == null)
+                        {
+                            <li><a href="/Login/Login">Login</a></li>
+                            <li><a href="/ContNou/InregistrareUser">Cont Nou</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="/Login/SignOut">SignOut</a></li>
+                        }
+                    }
+                    
                 </ul>
             </div>
         </div>
