@@ -8,3 +8,13 @@ C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumen
 C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\obj\Debug\1. MVIM.DAL.csprojResolveAssemblyReference.cache
 C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\obj\Debug\MVIM.DAL.dll
 C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\obj\Debug\MVIM.DAL.pdb
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\bin\Debug\MVIM.DAL.dll.config
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\bin\Debug\MVIM.DAL.dll
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\bin\Debug\MVIM.DAL.pdb
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\bin\Debug\EntityFramework.dll
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\bin\Debug\EntityFramework.xml
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\obj\Debug\1. MVIM.DAL.csprojResolveAssemblyReference.cache
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\obj\Debug\MVIM.DAL.dll
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\obj\Debug\MVIM.DAL.pdb

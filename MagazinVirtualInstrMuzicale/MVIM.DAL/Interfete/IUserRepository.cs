@@ -8,8 +8,5 @@ namespace MVIM.DAL.Interfete
 {
     public interface IUserRepository
     {
-        List<Rol> GetRoles();
-
-
     }
 }

@@ -7,3 +7,12 @@ C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumen
 C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.Domain\obj\Debug\2. MVIM.Domain.csprojResolveAssemblyReference.cache
 C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.Domain\obj\Debug\MVIM.Domain.dll
 C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.Domain\obj\Debug\MVIM.Domain.pdb
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.Domain\bin\Debug\MVIM.Domain.dll
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.Domain\bin\Debug\MVIM.Domain.pdb
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.Domain\bin\Debug\MVIM.DAL.dll
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.Domain\bin\Debug\EntityFramework.dll
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.Domain\bin\Debug\MVIM.DAL.pdb
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.Domain\bin\Debug\EntityFramework.xml
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.Domain\obj\Debug\2. MVIM.Domain.csprojResolveAssemblyReference.cache
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.Domain\obj\Debug\MVIM.Domain.dll
+C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.Domain\obj\Debug\MVIM.Domain.pdb

@@ -9,6 +9,5 @@ namespace MVIM.Domain.Interfaces
 {
     interface IUserManager
     {
-        List<Rol> GetRoles();
     }
 }
