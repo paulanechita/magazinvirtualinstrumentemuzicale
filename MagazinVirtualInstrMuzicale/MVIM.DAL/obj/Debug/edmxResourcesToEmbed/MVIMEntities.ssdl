@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="MVIMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="MagazinInstrumenteDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Adresa">
     <Key>
       <PropertyRef Name="IdAdresa" />
@@ -18,15 +18,13 @@
     <Property Name="IdCategorie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NumeCategorie" Type="nvarchar" MaxLength="250" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CategorieProdus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="CategorieProdus">
     <Key>
-      <PropertyRef Name="IdProdus" />
-      <PropertyRef Name="IdCategorie" />
+      <PropertyRef Name="IdCategorieProdus" />
     </Key>
     <Property Name="IdProdus" Type="int" Nullable="false" />
     <Property Name="IdCategorie" Type="int" Nullable="false" />
+    <Property Name="IdCategorieProdus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="Client">
     <Key>
@@ -329,9 +327,10 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="MVIMModelStoreContainer">
+  <EntityContainer Name="MagazinInstrumenteDbModelStoreContainer">
     <EntitySet Name="Adresa" EntityType="Self.Adresa" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Categorie" EntityType="Self.Categorie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategorieProdus" EntityType="Self.CategorieProdus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Comanda" EntityType="Self.Comanda" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ComandaProdus" EntityType="Self.ComandaProdus" Schema="dbo" store:Type="Tables" />
@@ -344,12 +343,6 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
     <EntitySet Name="StatusCos" EntityType="Self.StatusCos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="CategorieProdus" EntityType="Self.CategorieProdus" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [CategorieProdus].[IdProdus] AS [IdProdus], 
-    [CategorieProdus].[IdCategorie] AS [IdCategorie]
-    FROM [dbo].[CategorieProdus] AS [CategorieProdus]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="CosProdus" EntityType="Self.CosProdus" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [CosProdus].[IdCos] AS [IdCos], 

@@ -9,7 +9,7 @@ namespace MVIM.DAL.Repository
 {
     public class UserRepository : IUserRepository
     {
-        MVIMEntities _context = new MVIMEntities();
+        private MVIMEntities _context = new MVIMEntities();
 
         public bool LoginUser(string username, string parola)
         {
@@ -22,6 +22,15 @@ namespace MVIM.DAL.Repository
                 isUserLogged = true;
             }
             return isUserLogged;
+        }
+
+        public string ReturnRoleForUser(string user)
+        {
+            var roleId = _context.User.Where(x => x.UserName == user).FirstOrDefault().IdRol;
+
+            var role = _context.Rol.Where(x => x.IdRol == roleId).FirstOrDefault().Rol1;
+
+            return role;
         }
 
         public bool SaveUser(string nume, string prenume, DateTime dataNasterii, string email, string numarTelefon, string username, string parola)
@@ -57,7 +66,11 @@ namespace MVIM.DAL.Repository
                 // Loghezi exceptia in db
                 throw;
             }
+
+
         }
+
+
 
     }
 }

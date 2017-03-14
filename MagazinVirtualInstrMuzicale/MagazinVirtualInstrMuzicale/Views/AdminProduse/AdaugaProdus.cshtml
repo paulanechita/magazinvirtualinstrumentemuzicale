@@ -1,0 +1,45 @@
+﻿@model MagazinVirtualInstrMuzicale.Models.AdaugaProdusModel
+
+<h2>Adauga Produs</h2>
+
+<form method="post" enctype="multipart/form-data">
+    Nume Produs:
+    <br />
+    <input type="text" name="Nume" />
+    <br />
+    Pret Produs:
+    <br />
+    <input type="text" name="Pret" />
+    <br />
+    Descriere Produs:
+    <br />
+    <textarea type="text" name="Descriere"></textarea>
+    <br />
+    Categorie Produs:
+    <br />
+    @Html.DropDownListFor(m => m.IdCategorieProdusSelectata, new SelectList(Model.CategoriiProduse, "IdCategorie", "NumeCategorie"), "  --Selecteaza Categoria--  ")
+    <br />
+    Producator Produs:
+    <br />
+    @Html.DropDownListFor(m => m.IdProducatorProdusSelectat, new SelectList(Model.ProducatoriProduse, "IdProducator", "Nume"), "  --Selecteaza Producator--  ")
+    <br />
+    Incarca Poza:
+    <br />
+    <input type="file" id="FileId" name="Upload" />
+    <br />
+    <br />
+    <input type="submit" value="Adauga" />
+    <br />
+</form>
+<br />
+<br />
+<br />
+<input type="button" href="~/AdminProduse/LoadPicture/" value="Load Pictore" />
+
+@Html.ActionLink("Load",
+                "LoadPicture",
+                "AdminProduse",
+               null,
+                null
+                )
+

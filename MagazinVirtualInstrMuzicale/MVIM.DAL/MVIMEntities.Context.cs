@@ -27,6 +27,7 @@ namespace MVIM.DAL
     
         public virtual DbSet<Adresa> Adresa { get; set; }
         public virtual DbSet<Categorie> Categorie { get; set; }
+        public virtual DbSet<CategorieProdus> CategorieProdus { get; set; }
         public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<Comanda> Comanda { get; set; }
         public virtual DbSet<ComandaProdus> ComandaProdus { get; set; }

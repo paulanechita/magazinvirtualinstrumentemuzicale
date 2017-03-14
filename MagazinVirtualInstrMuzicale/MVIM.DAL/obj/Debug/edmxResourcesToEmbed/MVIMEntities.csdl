@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="MVIMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="MagazinInstrumenteDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Adresa">
     <Key>
       <PropertyRef Name="IdAdresa" />
@@ -18,7 +18,17 @@
     </Key>
     <Property Name="IdCategorie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NumeCategorie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Produs" Relationship="Self.CategorieProdus" FromRole="Categorie" ToRole="Produs" />
+    <NavigationProperty Name="CategorieProdus" Relationship="Self.FK_CategorieProdus_Categorie" FromRole="Categorie" ToRole="CategorieProdus" />
+  </EntityType>
+  <EntityType Name="CategorieProdus">
+    <Key>
+      <PropertyRef Name="IdCategorieProdus" />
+    </Key>
+    <Property Name="IdProdus" Type="Int32" Nullable="false" />
+    <Property Name="IdCategorie" Type="Int32" Nullable="false" />
+    <Property Name="IdCategorieProdus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Categorie" Relationship="Self.FK_CategorieProdus_Categorie" FromRole="CategorieProdus" ToRole="Categorie" />
+    <NavigationProperty Name="Produs" Relationship="Self.FK_CategorieProdus_Produs" FromRole="CategorieProdus" ToRole="Produs" />
   </EntityType>
   <EntityType Name="Client">
     <Key>
@@ -102,11 +112,11 @@
     <Property Name="NumeProdus" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PretProdus" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="DescriereProdus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CategorieProdus" Relationship="Self.FK_CategorieProdus_Produs" FromRole="Produs" ToRole="CategorieProdus" />
     <NavigationProperty Name="ComandaProdus" Relationship="Self.FK_ComandaProdus_Produs" FromRole="Produs" ToRole="ComandaProdus" />
     <NavigationProperty Name="PozaProdus" Relationship="Self.FK_PozaProdus_Produs" FromRole="Produs" ToRole="PozaProdus" />
     <NavigationProperty Name="Producator" Relationship="Self.FK_Produs_Producator" FromRole="Produs" ToRole="Producator" />
     <NavigationProperty Name="CosProdus" Relationship="Self.FK_CosProdus_Produs" FromRole="Produs" ToRole="CosProdus" />
-    <NavigationProperty Name="Categorie" Relationship="Self.CategorieProdus" FromRole="Produs" ToRole="Categorie" />
   </EntityType>
   <EntityType Name="Rol">
     <Key>
@@ -174,6 +184,30 @@
       </Principal>
       <Dependent Role="Comanda">
         <PropertyRef Name="IdAdresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategorieProdus_Categorie">
+    <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+    <End Role="CategorieProdus" Type="Self.CategorieProdus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorie">
+        <PropertyRef Name="IdCategorie" />
+      </Principal>
+      <Dependent Role="CategorieProdus">
+        <PropertyRef Name="IdCategorie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategorieProdus_Produs">
+    <End Role="Produs" Type="Self.Produs" Multiplicity="1" />
+    <End Role="CategorieProdus" Type="Self.CategorieProdus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produs">
+        <PropertyRef Name="IdProdus" />
+      </Principal>
+      <Dependent Role="CategorieProdus">
+        <PropertyRef Name="IdProdus" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -321,13 +355,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="CategorieProdus">
-    <End Role="Categorie" Type="Self.Categorie" Multiplicity="*" />
-    <End Role="Produs" Type="Self.Produs" Multiplicity="*" />
-  </Association>
   <EntityContainer Name="MVIMEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Adresa" EntityType="Self.Adresa" />
     <EntitySet Name="Categorie" EntityType="Self.Categorie" />
+    <EntitySet Name="CategorieProdus" EntityType="Self.CategorieProdus" />
     <EntitySet Name="Client" EntityType="Self.Client" />
     <EntitySet Name="Comanda" EntityType="Self.Comanda" />
     <EntitySet Name="ComandaProdus" EntityType="Self.ComandaProdus" />
@@ -344,6 +375,14 @@
     <AssociationSet Name="FK_Comanda_Adresa" Association="Self.FK_Comanda_Adresa">
       <End Role="Adresa" EntitySet="Adresa" />
       <End Role="Comanda" EntitySet="Comanda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategorieProdus_Categorie" Association="Self.FK_CategorieProdus_Categorie">
+      <End Role="Categorie" EntitySet="Categorie" />
+      <End Role="CategorieProdus" EntitySet="CategorieProdus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategorieProdus_Produs" Association="Self.FK_CategorieProdus_Produs">
+      <End Role="Produs" EntitySet="Produs" />
+      <End Role="CategorieProdus" EntitySet="CategorieProdus" />
     </AssociationSet>
     <AssociationSet Name="FK_Client_User" Association="Self.FK_Client_User">
       <End Role="User" EntitySet="User" />
@@ -392,10 +431,6 @@
     <AssociationSet Name="FK_User_Rol" Association="Self.FK_User_Rol">
       <End Role="Rol" EntitySet="Rol" />
       <End Role="User" EntitySet="User" />
-    </AssociationSet>
-    <AssociationSet Name="CategorieProdus" Association="Self.CategorieProdus">
-      <End Role="Categorie" EntitySet="Categorie" />
-      <End Role="Produs" EntitySet="Produs" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

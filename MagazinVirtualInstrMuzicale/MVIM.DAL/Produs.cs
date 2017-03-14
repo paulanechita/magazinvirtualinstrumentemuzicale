@@ -17,10 +17,10 @@ namespace MVIM.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Produs()
         {
+            this.CategorieProdus = new HashSet<CategorieProdus>();
             this.ComandaProdus = new HashSet<ComandaProdus>();
             this.PozaProdus = new HashSet<PozaProdus>();
             this.CosProdus = new HashSet<CosProdus>();
-            this.Categorie = new HashSet<Categorie>();
         }
     
         public int IdProdus { get; set; }
@@ -30,13 +30,13 @@ namespace MVIM.DAL
         public string DescriereProdus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CategorieProdus> CategorieProdus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ComandaProdus> ComandaProdus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PozaProdus> PozaProdus { get; set; }
         public virtual Producator Producator { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CosProdus> CosProdus { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Categorie> Categorie { get; set; }
     }
 }

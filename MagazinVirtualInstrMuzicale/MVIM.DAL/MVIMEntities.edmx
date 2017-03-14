@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MVIMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MagazinInstrumenteDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adresa">
           <Key>
             <PropertyRef Name="IdAdresa" />
@@ -23,15 +23,13 @@
           <Property Name="IdCategorie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NumeCategorie" Type="nvarchar" MaxLength="250" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CategorieProdus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CategorieProdus">
           <Key>
-            <PropertyRef Name="IdProdus" />
-            <PropertyRef Name="IdCategorie" />
+            <PropertyRef Name="IdCategorieProdus" />
           </Key>
           <Property Name="IdProdus" Type="int" Nullable="false" />
           <Property Name="IdCategorie" Type="int" Nullable="false" />
+          <Property Name="IdCategorieProdus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -334,9 +332,10 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MVIMModelStoreContainer">
+        <EntityContainer Name="MagazinInstrumenteDbModelStoreContainer">
           <EntitySet Name="Adresa" EntityType="Self.Adresa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categorie" EntityType="Self.Categorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategorieProdus" EntityType="Self.CategorieProdus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comanda" EntityType="Self.Comanda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ComandaProdus" EntityType="Self.ComandaProdus" Schema="dbo" store:Type="Tables" />
@@ -349,12 +348,6 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
           <EntitySet Name="StatusCos" EntityType="Self.StatusCos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CategorieProdus" EntityType="Self.CategorieProdus" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CategorieProdus].[IdProdus] AS [IdProdus], 
-    [CategorieProdus].[IdCategorie] AS [IdCategorie]
-    FROM [dbo].[CategorieProdus] AS [CategorieProdus]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="CosProdus" EntityType="Self.CosProdus" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [CosProdus].[IdCos] AS [IdCos], 
@@ -427,7 +420,7 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MVIMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="MagazinInstrumenteDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Adresa">
           <Key>
             <PropertyRef Name="IdAdresa" />
@@ -446,7 +439,17 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
           </Key>
           <Property Name="IdCategorie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NumeCategorie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Produs" Relationship="Self.CategorieProdus" FromRole="Categorie" ToRole="Produs" />
+          <NavigationProperty Name="CategorieProdus" Relationship="Self.FK_CategorieProdus_Categorie" FromRole="Categorie" ToRole="CategorieProdus" />
+        </EntityType>
+        <EntityType Name="CategorieProdus">
+          <Key>
+            <PropertyRef Name="IdCategorieProdus" />
+          </Key>
+          <Property Name="IdProdus" Type="Int32" Nullable="false" />
+          <Property Name="IdCategorie" Type="Int32" Nullable="false" />
+          <Property Name="IdCategorieProdus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK_CategorieProdus_Categorie" FromRole="CategorieProdus" ToRole="Categorie" />
+          <NavigationProperty Name="Produs" Relationship="Self.FK_CategorieProdus_Produs" FromRole="CategorieProdus" ToRole="Produs" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -530,11 +533,11 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
           <Property Name="NumeProdus" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PretProdus" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="DescriereProdus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CategorieProdus" Relationship="Self.FK_CategorieProdus_Produs" FromRole="Produs" ToRole="CategorieProdus" />
           <NavigationProperty Name="ComandaProdus" Relationship="Self.FK_ComandaProdus_Produs" FromRole="Produs" ToRole="ComandaProdus" />
           <NavigationProperty Name="PozaProdus" Relationship="Self.FK_PozaProdus_Produs" FromRole="Produs" ToRole="PozaProdus" />
           <NavigationProperty Name="Producator" Relationship="Self.FK_Produs_Producator" FromRole="Produs" ToRole="Producator" />
           <NavigationProperty Name="CosProdus" Relationship="Self.FK_CosProdus_Produs" FromRole="Produs" ToRole="CosProdus" />
-          <NavigationProperty Name="Categorie" Relationship="Self.CategorieProdus" FromRole="Produs" ToRole="Categorie" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -602,6 +605,30 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </Principal>
             <Dependent Role="Comanda">
               <PropertyRef Name="IdAdresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategorieProdus_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="CategorieProdus" Type="Self.CategorieProdus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="IdCategorie" />
+            </Principal>
+            <Dependent Role="CategorieProdus">
+              <PropertyRef Name="IdCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategorieProdus_Produs">
+          <End Role="Produs" Type="Self.Produs" Multiplicity="1" />
+          <End Role="CategorieProdus" Type="Self.CategorieProdus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produs">
+              <PropertyRef Name="IdProdus" />
+            </Principal>
+            <Dependent Role="CategorieProdus">
+              <PropertyRef Name="IdProdus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -749,13 +776,10 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="CategorieProdus">
-          <End Role="Categorie" Type="Self.Categorie" Multiplicity="*" />
-          <End Role="Produs" Type="Self.Produs" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="MVIMEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adresa" EntityType="Self.Adresa" />
           <EntitySet Name="Categorie" EntityType="Self.Categorie" />
+          <EntitySet Name="CategorieProdus" EntityType="Self.CategorieProdus" />
           <EntitySet Name="Client" EntityType="Self.Client" />
           <EntitySet Name="Comanda" EntityType="Self.Comanda" />
           <EntitySet Name="ComandaProdus" EntityType="Self.ComandaProdus" />
@@ -772,6 +796,14 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
           <AssociationSet Name="FK_Comanda_Adresa" Association="Self.FK_Comanda_Adresa">
             <End Role="Adresa" EntitySet="Adresa" />
             <End Role="Comanda" EntitySet="Comanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategorieProdus_Categorie" Association="Self.FK_CategorieProdus_Categorie">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="CategorieProdus" EntitySet="CategorieProdus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategorieProdus_Produs" Association="Self.FK_CategorieProdus_Produs">
+            <End Role="Produs" EntitySet="Produs" />
+            <End Role="CategorieProdus" EntitySet="CategorieProdus" />
           </AssociationSet>
           <AssociationSet Name="FK_Client_User" Association="Self.FK_Client_User">
             <End Role="User" EntitySet="User" />
@@ -821,19 +853,15 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             <End Role="Rol" EntitySet="Rol" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
-          <AssociationSet Name="CategorieProdus" Association="Self.CategorieProdus">
-            <End Role="Categorie" EntitySet="Categorie" />
-            <End Role="Produs" EntitySet="Produs" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MVIMModelStoreContainer" CdmEntityContainer="MVIMEntities">
+        <EntityContainerMapping StorageEntityContainer="MagazinInstrumenteDbModelStoreContainer" CdmEntityContainer="MVIMEntities">
           <EntitySetMapping Name="Adresa">
-            <EntityTypeMapping TypeName="MVIMModel.Adresa">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Adresa">
               <MappingFragment StoreEntitySet="Adresa">
                 <ScalarProperty Name="IdAdresa" ColumnName="IdAdresa" />
                 <ScalarProperty Name="Strada" ColumnName="Strada" />
@@ -845,15 +873,24 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categorie">
-            <EntityTypeMapping TypeName="MVIMModel.Categorie">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Categorie">
               <MappingFragment StoreEntitySet="Categorie">
                 <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
                 <ScalarProperty Name="NumeCategorie" ColumnName="NumeCategorie" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CategorieProdus">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.CategorieProdus">
+              <MappingFragment StoreEntitySet="CategorieProdus">
+                <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
+                <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+                <ScalarProperty Name="IdCategorieProdus" ColumnName="IdCategorieProdus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Client">
-            <EntityTypeMapping TypeName="MVIMModel.Client">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Client">
               <MappingFragment StoreEntitySet="Client">
                 <ScalarProperty Name="IdClient" ColumnName="IdClient" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
@@ -866,7 +903,7 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Comanda">
-            <EntityTypeMapping TypeName="MVIMModel.Comanda">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Comanda">
               <MappingFragment StoreEntitySet="Comanda">
                 <ScalarProperty Name="IdComanda" ColumnName="IdComanda" />
                 <ScalarProperty Name="IdClient" ColumnName="IdClient" />
@@ -878,7 +915,7 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ComandaProdus">
-            <EntityTypeMapping TypeName="MVIMModel.ComandaProdus">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.ComandaProdus">
               <MappingFragment StoreEntitySet="ComandaProdus">
                 <ScalarProperty Name="IdComandaProdus" ColumnName="IdComandaProdus" />
                 <ScalarProperty Name="IdComanda" ColumnName="IdComanda" />
@@ -891,7 +928,7 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cos">
-            <EntityTypeMapping TypeName="MVIMModel.Cos">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Cos">
               <MappingFragment StoreEntitySet="Cos">
                 <ScalarProperty Name="IdCos" ColumnName="IdCos" />
                 <ScalarProperty Name="IdClient" ColumnName="IdClient" />
@@ -901,7 +938,7 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PozaProdus">
-            <EntityTypeMapping TypeName="MVIMModel.PozaProdus">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.PozaProdus">
               <MappingFragment StoreEntitySet="PozaProdus">
                 <ScalarProperty Name="IdPozaProdus" ColumnName="IdPozaProdus" />
                 <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
@@ -910,7 +947,7 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Producator">
-            <EntityTypeMapping TypeName="MVIMModel.Producator">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Producator">
               <MappingFragment StoreEntitySet="Producator">
                 <ScalarProperty Name="IdProducator" ColumnName="IdProducator" />
                 <ScalarProperty Name="Nume" ColumnName="Nume" />
@@ -918,7 +955,7 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Produs">
-            <EntityTypeMapping TypeName="MVIMModel.Produs">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Produs">
               <MappingFragment StoreEntitySet="Produs">
                 <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
                 <ScalarProperty Name="IdProducator" ColumnName="IdProducator" />
@@ -929,7 +966,7 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Rol">
-            <EntityTypeMapping TypeName="MVIMModel.Rol">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Rol">
               <MappingFragment StoreEntitySet="Rol">
                 <ScalarProperty Name="IdRol" ColumnName="IdRol" />
                 <ScalarProperty Name="Rol1" ColumnName="Rol" />
@@ -937,7 +974,7 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StatusComanda">
-            <EntityTypeMapping TypeName="MVIMModel.StatusComanda">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.StatusComanda">
               <MappingFragment StoreEntitySet="StatusComanda">
                 <ScalarProperty Name="IdCodStatusComanda" ColumnName="IdCodStatusComanda" />
                 <ScalarProperty Name="DescriereStatusComanda" ColumnName="DescriereStatusComanda" />
@@ -945,7 +982,7 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StatusCos">
-            <EntityTypeMapping TypeName="MVIMModel.StatusCos">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.StatusCos">
               <MappingFragment StoreEntitySet="StatusCos">
                 <ScalarProperty Name="IdCodStatusCos" ColumnName="IdCodStatusCos" />
                 <ScalarProperty Name="DescriereStatusCos" ColumnName="DescriereStatusCos" />
@@ -953,7 +990,7 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="MVIMModel.sysdiagrams">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -964,7 +1001,7 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="MVIMModel.User">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="IdRol" ColumnName="IdRol" />
@@ -974,7 +1011,7 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CosProdus">
-            <EntityTypeMapping TypeName="MVIMModel.CosProdus">
+            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.CosProdus">
               <MappingFragment StoreEntitySet="CosProdus">
                 <ScalarProperty Name="IdCos" ColumnName="IdCos" />
                 <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
@@ -982,14 +1019,6 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="CategorieProdus" TypeName="MVIMModel.CategorieProdus" StoreEntitySet="CategorieProdus">
-            <EndProperty Name="Categorie">
-              <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
-            </EndProperty>
-            <EndProperty Name="Produs">
-              <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

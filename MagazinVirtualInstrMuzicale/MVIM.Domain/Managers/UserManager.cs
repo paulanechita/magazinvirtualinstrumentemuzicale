@@ -20,5 +20,10 @@ namespace MVIM.Domain.Managers
         {
             return _repository.SaveUser(nume, prenume, dataNasterii, email, numarTelefon, username, parola);
         }
+
+        public string ReturnRoleForUser(string user)
+        {
+            return _repository.ReturnRoleForUser(user);
+        }
     }
 }

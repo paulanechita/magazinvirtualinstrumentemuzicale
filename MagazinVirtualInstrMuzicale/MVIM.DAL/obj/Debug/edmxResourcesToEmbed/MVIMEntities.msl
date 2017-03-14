@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MVIMModelStoreContainer" CdmEntityContainer="MVIMEntities">
+  <EntityContainerMapping StorageEntityContainer="MagazinInstrumenteDbModelStoreContainer" CdmEntityContainer="MVIMEntities">
     <EntitySetMapping Name="Adresa">
-      <EntityTypeMapping TypeName="MVIMModel.Adresa">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Adresa">
         <MappingFragment StoreEntitySet="Adresa">
           <ScalarProperty Name="IdAdresa" ColumnName="IdAdresa" />
           <ScalarProperty Name="Strada" ColumnName="Strada" />
@@ -14,15 +14,24 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Categorie">
-      <EntityTypeMapping TypeName="MVIMModel.Categorie">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Categorie">
         <MappingFragment StoreEntitySet="Categorie">
           <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
           <ScalarProperty Name="NumeCategorie" ColumnName="NumeCategorie" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CategorieProdus">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.CategorieProdus">
+        <MappingFragment StoreEntitySet="CategorieProdus">
+          <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
+          <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+          <ScalarProperty Name="IdCategorieProdus" ColumnName="IdCategorieProdus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Client">
-      <EntityTypeMapping TypeName="MVIMModel.Client">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Client">
         <MappingFragment StoreEntitySet="Client">
           <ScalarProperty Name="IdClient" ColumnName="IdClient" />
           <ScalarProperty Name="IdUser" ColumnName="IdUser" />
@@ -35,7 +44,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Comanda">
-      <EntityTypeMapping TypeName="MVIMModel.Comanda">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Comanda">
         <MappingFragment StoreEntitySet="Comanda">
           <ScalarProperty Name="IdComanda" ColumnName="IdComanda" />
           <ScalarProperty Name="IdClient" ColumnName="IdClient" />
@@ -47,7 +56,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ComandaProdus">
-      <EntityTypeMapping TypeName="MVIMModel.ComandaProdus">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.ComandaProdus">
         <MappingFragment StoreEntitySet="ComandaProdus">
           <ScalarProperty Name="IdComandaProdus" ColumnName="IdComandaProdus" />
           <ScalarProperty Name="IdComanda" ColumnName="IdComanda" />
@@ -60,7 +69,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Cos">
-      <EntityTypeMapping TypeName="MVIMModel.Cos">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Cos">
         <MappingFragment StoreEntitySet="Cos">
           <ScalarProperty Name="IdCos" ColumnName="IdCos" />
           <ScalarProperty Name="IdClient" ColumnName="IdClient" />
@@ -70,7 +79,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PozaProdus">
-      <EntityTypeMapping TypeName="MVIMModel.PozaProdus">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.PozaProdus">
         <MappingFragment StoreEntitySet="PozaProdus">
           <ScalarProperty Name="IdPozaProdus" ColumnName="IdPozaProdus" />
           <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
@@ -79,7 +88,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Producator">
-      <EntityTypeMapping TypeName="MVIMModel.Producator">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Producator">
         <MappingFragment StoreEntitySet="Producator">
           <ScalarProperty Name="IdProducator" ColumnName="IdProducator" />
           <ScalarProperty Name="Nume" ColumnName="Nume" />
@@ -87,7 +96,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Produs">
-      <EntityTypeMapping TypeName="MVIMModel.Produs">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Produs">
         <MappingFragment StoreEntitySet="Produs">
           <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
           <ScalarProperty Name="IdProducator" ColumnName="IdProducator" />
@@ -98,7 +107,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Rol">
-      <EntityTypeMapping TypeName="MVIMModel.Rol">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.Rol">
         <MappingFragment StoreEntitySet="Rol">
           <ScalarProperty Name="IdRol" ColumnName="IdRol" />
           <ScalarProperty Name="Rol1" ColumnName="Rol" />
@@ -106,7 +115,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="StatusComanda">
-      <EntityTypeMapping TypeName="MVIMModel.StatusComanda">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.StatusComanda">
         <MappingFragment StoreEntitySet="StatusComanda">
           <ScalarProperty Name="IdCodStatusComanda" ColumnName="IdCodStatusComanda" />
           <ScalarProperty Name="DescriereStatusComanda" ColumnName="DescriereStatusComanda" />
@@ -114,7 +123,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="StatusCos">
-      <EntityTypeMapping TypeName="MVIMModel.StatusCos">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.StatusCos">
         <MappingFragment StoreEntitySet="StatusCos">
           <ScalarProperty Name="IdCodStatusCos" ColumnName="IdCodStatusCos" />
           <ScalarProperty Name="DescriereStatusCos" ColumnName="DescriereStatusCos" />
@@ -122,7 +131,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="MVIMModel.sysdiagrams">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -133,7 +142,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="User">
-      <EntityTypeMapping TypeName="MVIMModel.User">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.User">
         <MappingFragment StoreEntitySet="User">
           <ScalarProperty Name="IdUser" ColumnName="IdUser" />
           <ScalarProperty Name="IdRol" ColumnName="IdRol" />
@@ -143,7 +152,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CosProdus">
-      <EntityTypeMapping TypeName="MVIMModel.CosProdus">
+      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.CosProdus">
         <MappingFragment StoreEntitySet="CosProdus">
           <ScalarProperty Name="IdCos" ColumnName="IdCos" />
           <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
@@ -151,13 +160,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="CategorieProdus" TypeName="MVIMModel.CategorieProdus" StoreEntitySet="CategorieProdus">
-      <EndProperty Name="Categorie">
-        <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
-      </EndProperty>
-      <EndProperty Name="Produs">
-        <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

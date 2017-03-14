@@ -12,18 +12,13 @@ namespace MVIM.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Categorie
+    public partial class CategorieProdus
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Categorie()
-        {
-            this.CategorieProdus = new HashSet<CategorieProdus>();
-        }
-    
+        public int IdProdus { get; set; }
         public int IdCategorie { get; set; }
-        public string NumeCategorie { get; set; }
+        public int IdCategorieProdus { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CategorieProdus> CategorieProdus { get; set; }
+        public virtual Categorie Categorie { get; set; }
+        public virtual Produs Produs { get; set; }
     }
 }

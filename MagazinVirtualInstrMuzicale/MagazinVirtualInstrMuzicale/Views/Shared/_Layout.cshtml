@@ -27,8 +27,16 @@
                             <li><a href="/Login/Login">Login</a></li>
                             <li><a href="/ContNou/InregistrareUser">Cont Nou</a></li>
                         }
-                        else
+                        else if (Session["UserRole"].ToString() == "Client")
                         {
+                            <li><a href="/Login/SignOut">SignOut</a></li>
+                        }
+                        else if (Session["UserRole"].ToString() == "Administrator")
+                        {
+                            @*<li><a href="/AdminProduse/AdaugaProdus">Produse</a></li>*@
+                            <li><a href="/AdminProduse/OperatiuniProduse">Produse</a></li>
+                            <li><a href="/Login/SignOut">Users</a></li>
+                            <li><a href="/Login/SignOut">Comenzi Plasate</a></li>
                             <li><a href="/Login/SignOut">SignOut</a></li>
                         }
                     }
