@@ -24,5 +24,11 @@ namespace MVIM.Domain.Interfaces
         void AdaugaProducatorNou(string numeProducator);
 
         List<Produs> GetProduse();
+
+        Produs GetProdus(int id);
+
+        bool ActualizeazaProdus(Produs produsActualizat);
+
+        bool StergeProdus(int id);
     }
 }

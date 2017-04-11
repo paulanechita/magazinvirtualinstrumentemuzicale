@@ -1,4 +1,5 @@
-﻿using MagazinVirtualInstrMuzicale.Models;
+﻿using MagazinVirtualInstrMuzicale.Common;
+using MagazinVirtualInstrMuzicale.Models;
 using MVIM.DAL;
 using MVIM.Domain.Interfaces;
 using MVIM.Domain.Managers;
@@ -11,10 +12,15 @@ using System.Web.Mvc;
 
 namespace MagazinVirtualInstrMuzicale.Controllers
 {
+    [AutorizareAdministratorCustom]
     public class AdminProduseController : Controller
     {
+
+        private IUserManager _userManager = new UserManager();
         private IProdusManager _produsManager = new ProdusManager();
 
+        public SesiuneCurenta User = new SesiuneCurenta();
+        
         // GET: AdminProduse
         [HttpGet]
         public ActionResult AdaugaProdus()
@@ -100,6 +106,34 @@ namespace MagazinVirtualInstrMuzicale.Controllers
         {
             var produse = _produsManager.GetProduse();
             return View(produse);
+        }
+
+        [HttpGet]
+        public ActionResult EditeazaProdus(int id)
+        {
+            var produsDeEditat = _produsManager.GetProdus(id);
+            return View(produsDeEditat);
+        }
+
+        [HttpPost]
+        public ActionResult EditeazaProdus(MVIM.DAL.Produs produsActualizat)
+        {
+            var esteActualizat = _produsManager.ActualizeazaProdus(produsActualizat);
+            if (esteActualizat)
+            {
+                return RedirectToAction("AfisareProduse");
+            }
+            return View();
+        }
+
+        public ActionResult StergeProdus(int id)
+        {
+            var aFostSters = _produsManager.StergeProdus(id);
+            if (aFostSters)
+            {
+                return RedirectToAction("AfisareProduse");
+            }
+            return RedirectToAction("AfisareProduse");
         }
 
     }

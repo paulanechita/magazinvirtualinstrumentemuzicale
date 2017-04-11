@@ -14,20 +14,22 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr><td>
-        Numele Produsului: @item.NumeProdus
-        <br />
-        Pretul Produsului:   @item.PretProdus
-        <br />
-        <br />
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                Numele Produsului: @item.NumeProdus
+                <br />
+                Pretul Produsului:   @item.PretProdus
+                <br />
+                <br />
+            </td>
+            <td>
+                @Html.ActionLink("Editeaza", "EditeazaProdus", "AdminProduse", new { id = item.IdProdus }, null) |
+
+                @Html.ActionLink("Delete", "StergeProdus", "AdminProduse", new { id = item.IdProdus }, null)
+            </td>
+        </tr>
+    }
 
 </table>

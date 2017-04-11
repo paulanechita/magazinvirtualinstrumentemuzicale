@@ -345,3 +345,9 @@ REFERENCES [dbo].[Rol] ([IdRol])
 GO
 ALTER TABLE [dbo].[User] CHECK CONSTRAINT [FK_User_Rol]
 GO
+
+INSERT INTO [dbo].[Rol] (IdRol, Rol)
+VALUES (1, 'Administrator')
+
+INSERT INTO [dbo].[Rol] (IdRol, Rol)
+VALUES (2, 'Client')

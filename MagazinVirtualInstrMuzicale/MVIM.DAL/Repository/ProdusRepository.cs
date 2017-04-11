@@ -16,7 +16,7 @@ namespace MVIM.DAL.Repository
             try
             {
                 var isSaved = false;
-                
+
                 _context.Produs.Add(new Produs { IdProducator = idProducator, NumeProdus = numeProdus, PretProdus = pretProdus, DescriereProdus = descriereProdus });
                 _context.SaveChanges();
 
@@ -45,7 +45,7 @@ namespace MVIM.DAL.Repository
 
         public List<Categorie> GetCategorii()
         {
-            return _context.Categorie.OrderBy(x=>x.NumeCategorie).ToList();
+            return _context.Categorie.OrderBy(x => x.NumeCategorie).ToList();
         }
 
         public List<Producator> GetProducatori()
@@ -78,7 +78,57 @@ namespace MVIM.DAL.Repository
 
         public List<Produs> GetProduse()
         {
-            return _context.Produs.OrderBy(x=>x.NumeProdus).ToList();
+            return _context.Produs.OrderBy(x => x.NumeProdus).ToList();
+        }
+
+        public Produs GetProdus(int id)
+        {
+            return _context.Produs.Where(x => x.IdProdus == id).FirstOrDefault();
+        }
+
+        public bool ActualizeazaProdus(Produs produsActualizat)
+        {
+            var esteActualizat = false;
+
+            var produsDeActualizat = _context.Produs.Find(produsActualizat.IdProdus);
+
+            if (produsDeActualizat != null)
+            {
+                produsDeActualizat.NumeProdus = produsActualizat.NumeProdus;
+                produsDeActualizat.PretProdus = produsActualizat.PretProdus;
+                produsDeActualizat.DescriereProdus = produsActualizat.DescriereProdus;
+
+                _context.SaveChanges();
+                esteActualizat = true;
+            }
+
+            return esteActualizat;
+        }
+
+        public bool StergeProdus(int id)
+        {
+            //TODO: Refactorizare cu scoaterea produsului id de peste tot
+
+            var aFostSters = false;
+            var produsPentruSters = _context.Produs.FirstOrDefault(x => x.IdProdus == id);
+
+            if (produsPentruSters != null)
+            {
+                var categorieProdus = _context.CategorieProdus.FirstOrDefault(x => x.IdProdus == id);
+                if (categorieProdus != null)
+                    _context.CategorieProdus.Remove(categorieProdus);
+                _context.SaveChanges();
+
+                var pozaProdus = _context.PozaProdus.FirstOrDefault(x => x.IdProdus == id);
+                _context.PozaProdus.Remove(pozaProdus);
+                _context.SaveChanges();
+
+                _context.Produs.Remove(produsPentruSters);
+                _context.SaveChanges();
+                aFostSters = true;
+            }
+            return aFostSters;
+
         }
     }
 }

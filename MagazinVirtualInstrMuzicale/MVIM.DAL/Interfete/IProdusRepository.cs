@@ -23,5 +23,11 @@ namespace MVIM.DAL.Interfete
         void AdaugaProducatorNou(string numeProducator);
 
         List<Produs> GetProduse();
+
+        Produs GetProdus(int id);
+
+        bool ActualizeazaProdus(Produs produsActualizat);
+
+        bool StergeProdus(int id);
     }
 }

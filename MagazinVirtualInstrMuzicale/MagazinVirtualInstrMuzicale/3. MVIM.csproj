@@ -127,6 +127,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\AutorizareCustom.cs" />
+    <Compile Include="Common\SesiuneCurenta.cs" />
     <Compile Include="Controllers\Administrator\AdminProduseController.cs" />
     <Compile Include="Controllers\ContNouController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -159,6 +161,7 @@
     <Content Include="Views\AdminProduse\AdaugaCategorie.cshtml" />
     <Content Include="Views\AdminProduse\AdaugaProducator.cshtml" />
     <Content Include="Views\AdminProduse\AfisareProduse.cshtml" />
+    <Content Include="Views\AdminProduse\EditeazaProdus.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
