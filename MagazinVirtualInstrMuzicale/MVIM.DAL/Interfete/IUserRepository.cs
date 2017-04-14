@@ -13,5 +13,11 @@ namespace MVIM.DAL.Interfete
         bool LoginUser(string username, string parola);
 
         string ReturnRoleForUser(string user);
+
+        Client GetClientForUsername(int userId);
+
+        List<User> GetUsers();
+
+        bool DeleteUser(string username);
     }
 }

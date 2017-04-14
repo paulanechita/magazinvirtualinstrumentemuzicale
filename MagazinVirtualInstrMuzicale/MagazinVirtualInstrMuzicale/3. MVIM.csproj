@@ -141,6 +141,7 @@
     <Compile Include="Models\ContNouModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Produs.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +163,7 @@
     <Content Include="Views\AdminProduse\AdaugaProducator.cshtml" />
     <Content Include="Views\AdminProduse\AfisareProduse.cshtml" />
     <Content Include="Views\AdminProduse\EditeazaProdus.cshtml" />
+    <Content Include="Views\AdminProduse\Users.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

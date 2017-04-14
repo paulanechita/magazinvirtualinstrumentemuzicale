@@ -15,9 +15,9 @@ namespace MagazinVirtualInstrMuzicale.Controllers
     [AutorizareAdministratorCustom]
     public class AdminProduseController : Controller
     {
-
         private IUserManager _userManager = new UserManager();
         private IProdusManager _produsManager = new ProdusManager();
+        private static int idProdus;
 
         public SesiuneCurenta User = new SesiuneCurenta();
         
@@ -59,9 +59,6 @@ namespace MagazinVirtualInstrMuzicale.Controllers
                 IdCategorieProdusSelectata,
                 IdProducatorProdusSelectat
                 );
-
-
-
 
             return View();
         }
@@ -111,6 +108,7 @@ namespace MagazinVirtualInstrMuzicale.Controllers
         [HttpGet]
         public ActionResult EditeazaProdus(int id)
         {
+            idProdus = id;
             var produsDeEditat = _produsManager.GetProdus(id);
             return View(produsDeEditat);
         }
@@ -118,7 +116,7 @@ namespace MagazinVirtualInstrMuzicale.Controllers
         [HttpPost]
         public ActionResult EditeazaProdus(MVIM.DAL.Produs produsActualizat)
         {
-            var esteActualizat = _produsManager.ActualizeazaProdus(produsActualizat);
+            var esteActualizat = _produsManager.ActualizeazaProdus(produsActualizat, idProdus);
             if (esteActualizat)
             {
                 return RedirectToAction("AfisareProduse");
@@ -136,5 +134,37 @@ namespace MagazinVirtualInstrMuzicale.Controllers
             return RedirectToAction("AfisareProduse");
         }
 
+        public ActionResult Users()
+        {
+            var listaUseri = new List<Models.User>();
+
+            var useri = _userManager.GetUsers();
+
+            foreach (var user in useri)
+            {
+                var clientForUser = _userManager.GetClientForUsername(user.IdUser);
+
+                listaUseri.Add(
+                    new Models.User {
+                        Email = clientForUser.Email,
+                        NumarDeTelefon = clientForUser.NumarTelefon,
+                        Nume = clientForUser.Nume,
+                        Prenume = clientForUser.Prenume,
+                        Username = user.UserName });
+            }
+            //TODO: Retrieve users.
+            return View(listaUseri);
+        }
+
+        public ActionResult Delete(string username)
+        {
+            var esteSters = _userManager.DeleteUser(username);
+            if (esteSters)
+            {
+                return RedirectToAction("Users");
+            }
+            else 
+                return RedirectToAction("Users");
+        }
     }
 }

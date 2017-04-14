@@ -27,7 +27,7 @@ namespace MVIM.Domain.Interfaces
 
         Produs GetProdus(int id);
 
-        bool ActualizeazaProdus(Produs produsActualizat);
+        bool ActualizeazaProdus(Produs produsActualizat, int idProdus);
 
         bool StergeProdus(int id);
     }

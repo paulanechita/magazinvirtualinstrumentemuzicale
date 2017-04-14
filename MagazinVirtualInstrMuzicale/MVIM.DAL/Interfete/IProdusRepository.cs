@@ -26,7 +26,7 @@ namespace MVIM.DAL.Interfete
 
         Produs GetProdus(int id);
 
-        bool ActualizeazaProdus(Produs produsActualizat);
+        bool ActualizeazaProdus(Produs produsActualizat, int idProdus);
 
         bool StergeProdus(int id);
     }

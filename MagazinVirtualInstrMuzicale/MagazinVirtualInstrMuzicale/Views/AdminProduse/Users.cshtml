@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MagazinVirtualInstrMuzicale.Models.User>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nume)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prenume)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumarDeTelefon)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nume)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prenume)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumarDeTelefon)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { username=item.Username })
+        </td>
+    </tr>
+}
+
+</table>

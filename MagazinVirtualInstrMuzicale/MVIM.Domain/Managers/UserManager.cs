@@ -25,5 +25,20 @@ namespace MVIM.Domain.Managers
         {
             return _repository.ReturnRoleForUser(user);
         }
+
+        public Client GetClientForUsername(int userId)
+        {
+            return _repository.GetClientForUsername(userId);
+        }
+
+        public List<User> GetUsers()
+        {
+            return _repository.GetUsers();
+        }
+
+        public bool DeleteUser(string username)
+        {
+            return _repository.DeleteUser(username);
+        }
     }
 }

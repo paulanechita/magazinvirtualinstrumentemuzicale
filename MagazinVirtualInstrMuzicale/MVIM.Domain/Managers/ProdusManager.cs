@@ -59,9 +59,9 @@ namespace MVIM.Domain.Managers
             return _repository.GetProdus(id);
         }
 
-        public bool ActualizeazaProdus(Produs produsActualizat)
+        public bool ActualizeazaProdus(Produs produsActualizat, int idProdus)
         {
-            return _repository.ActualizeazaProdus(produsActualizat);
+            return _repository.ActualizeazaProdus(produsActualizat, idProdus);
         }
 
         public bool StergeProdus(int id)

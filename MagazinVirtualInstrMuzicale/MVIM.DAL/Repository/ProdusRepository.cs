@@ -86,11 +86,11 @@ namespace MVIM.DAL.Repository
             return _context.Produs.Where(x => x.IdProdus == id).FirstOrDefault();
         }
 
-        public bool ActualizeazaProdus(Produs produsActualizat)
+        public bool ActualizeazaProdus(Produs produsActualizat, int idProdus)
         {
             var esteActualizat = false;
 
-            var produsDeActualizat = _context.Produs.Find(produsActualizat.IdProdus);
+            var produsDeActualizat = _context.Produs.Find(idProdus);
 
             if (produsDeActualizat != null)
             {

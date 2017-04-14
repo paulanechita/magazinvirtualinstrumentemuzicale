@@ -11,6 +11,33 @@ namespace MVIM.DAL.Repository
     {
         private MVIMEntities _context = new MVIMEntities();
 
+        public bool DeleteUser(string username)
+        {
+            var esteSters = false;
+
+            var user = _context.User.Where(x => x.UserName == username).FirstOrDefault();
+            var clientForUser = GetClientForUsername(user.IdUser);
+
+            _context.Client.Remove(clientForUser);
+            _context.User.Remove(user);
+            _context.SaveChanges();
+
+            esteSters = true;
+
+            return esteSters;
+        }
+
+        public Client GetClientForUsername(int userId)
+        {
+            var client = _context.Client.Where(x => x.IdUser == userId).FirstOrDefault();
+            return client != null ? client : new DAL.Client();
+        }
+
+        public List<User> GetUsers()
+        {
+            return _context.User.ToList(); 
+        }
+
         public bool LoginUser(string username, string parola)
         {
             var isUserLogged = false;

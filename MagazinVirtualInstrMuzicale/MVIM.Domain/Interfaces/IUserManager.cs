@@ -14,5 +14,11 @@ namespace MVIM.Domain.Interfaces
         bool LoginUser(string username, string parola);
 
         string ReturnRoleForUser(string user);
+
+        Client GetClientForUsername(int userId);
+
+        List<User> GetUsers();
+
+        bool DeleteUser(string username);
     }
 }
