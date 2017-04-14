@@ -1,20 +1,6 @@
 CREATE DATABASE [MVIMDatabase]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'MVIMDatabase', FILENAME = N'C:\Users\pauli\MVIMDatabase.mdf' , SIZE = 3136KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
- LOG ON 
-( NAME = N'MVIMDatabase_log', FILENAME = N'C:\Users\pauli\MVIMDatabase_log.ldf' , SIZE = 832KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
-GO
 
-ALTER DATABASE [MagazinInstrumenteDb] SET COMPATIBILITY_LEVEL = 110
 GO
-
-IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
-begin
-EXEC [MagazinInstrumenteDb].[dbo].[sp_fulltext_database] @action = 'enable'
-end
-GO
-
 USE [MVIMDatabase]
 GO
 /****** Object:  Table [dbo].[Adresa]    Script Date: 21.03.2017 20:16:01 ******/
@@ -346,8 +332,8 @@ GO
 ALTER TABLE [dbo].[User] CHECK CONSTRAINT [FK_User_Rol]
 GO
 
-INSERT INTO [dbo].[Rol] (IdRol, Rol)
-VALUES (1, 'Administrator')
+INSERT INTO [dbo].[Rol] (Rol)
+VALUES ('Administrator')
 
-INSERT INTO [dbo].[Rol] (IdRol, Rol)
-VALUES (2, 'Client')
+INSERT INTO [dbo].[Rol] (Rol)
+VALUES ('Client')
