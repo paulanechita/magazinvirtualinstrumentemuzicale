@@ -9,7 +9,14 @@ namespace MVIM.Domain.Managers
 {
     public class UserManager : IUserManager
     {
-        private IUserRepository _repository = new UserRepository();
+        //private IUserRepository _repository;
+
+        //public UserManager(IUserRepository userRepository)
+        //{
+        //    _repository = userRepository;
+        //}
+
+        private UserRepository _repository = new UserRepository();
 
         public bool LoginUser(string username, string parola)
         {

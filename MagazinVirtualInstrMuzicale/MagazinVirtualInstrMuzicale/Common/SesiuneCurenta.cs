@@ -10,9 +10,19 @@ namespace MagazinVirtualInstrMuzicale.Common
 {
     public class SesiuneCurenta : Controller
     {
+        //private IUserManager _userManager;
+
+        //public SesiuneCurenta(IUserManager userManager) : base()
+        //{
+        //    _userManager = userManager;
+        //}
+        private IUserManager _userManager = new UserManager();
+
+        public SesiuneCurenta()
+        {
+        }
         public string GetSesiune()
         {
-            IUserManager _userManager = new UserManager();
             var userLogat = Session["UserLogat"].ToString();
 
             //TODO: modificare pe viitor

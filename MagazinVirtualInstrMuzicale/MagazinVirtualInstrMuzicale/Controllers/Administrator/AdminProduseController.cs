@@ -15,20 +15,22 @@ namespace MagazinVirtualInstrMuzicale.Controllers
     [AutorizareAdministratorCustom]
     public class AdminProduseController : Controller
     {
+        public SesiuneCurenta User = new SesiuneCurenta();
         private IUserManager _userManager = new UserManager();
         private IProdusManager _produsManager = new ProdusManager();
         private static int idProdus;
 
-        public SesiuneCurenta User = new SesiuneCurenta();
+        //public AdminProduseController(IProdusManager produsManager, IUserManager userManager)
+        //{
+        //    _produsManager = produsManager;
+        //    _userManager = userManager;
+        //}
         
-        // GET: AdminProduse
+
         [HttpGet]
         public ActionResult AdaugaProdus()
         {
-            var model = new AdaugaProdusModel();
-
-            model.CategoriiProduse = _produsManager.GetCategorii();
-            model.ProducatoriProduse = _produsManager.GetProducatori();
+            var model = GetAdaugaProdusModel();
 
             return View(model);
         }
@@ -60,13 +62,15 @@ namespace MagazinVirtualInstrMuzicale.Controllers
                 IdProducatorProdusSelectat
                 );
 
-            return View();
+            var model = GetAdaugaProdusModel();
+
+            return View(model);
         }
 
-        //test
-        public ActionResult LoadPicture()
+     
+        public ActionResult LoadPicture(int id)
         {
-            var bytePhoto = _produsManager.ReturnPhotos();
+            var bytePhoto = _produsManager.ReturnPhotos(id);
             return File(bytePhoto, "image/png");
         }
 
@@ -165,6 +169,16 @@ namespace MagazinVirtualInstrMuzicale.Controllers
             }
             else 
                 return RedirectToAction("Users");
+        }
+
+        private AdaugaProdusModel GetAdaugaProdusModel()
+        {
+            var model = new AdaugaProdusModel();
+
+            model.CategoriiProduse = _produsManager.GetCategorii();
+            model.ProducatoriProduse = _produsManager.GetProducatori();
+
+            return model;
         }
     }
 }

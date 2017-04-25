@@ -47,7 +47,6 @@ C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzica
 C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\obj\Debug\3. MVIM.csprojResolveAssemblyReference.cache
 C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\obj\Debug\MagazinVirtualInstrMuzicale.dll
 C:\Users\CalinLigiaSiClara\Desktop\LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\obj\Debug\MagazinVirtualInstrMuzicale.pdb
-C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\obj\Debug\3. MVIM.csprojResolveAssemblyReference.cache
 C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\roslyn\csc.exe
 C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -94,5 +93,18 @@ C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumen
 C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\System.Net.Http.Formatting.xml
 C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\System.Web.Http.xml
 C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\System.Web.Http.WebHost.xml
+C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\obj\Debug\3. MVIM.csprojResolveAssemblyReference.cache
 C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\obj\Debug\MagazinVirtualInstrMuzicale.dll
 C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\obj\Debug\MagazinVirtualInstrMuzicale.pdb
+C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\Microsoft.Practices.Unity.dll
+C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\Microsoft.Practices.Unity.Mvc.dll
+C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\WebActivatorEx.dll
+C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\Microsoft.Practices.Unity.xml
+C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\Microsoft.Practices.Unity.Mvc.xml
+C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MagazinVirtualInstrMuzicale\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml

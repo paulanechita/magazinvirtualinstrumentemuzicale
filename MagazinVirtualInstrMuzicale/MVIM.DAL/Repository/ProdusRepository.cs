@@ -9,6 +9,12 @@ namespace MVIM.DAL.Repository
 {
     public class ProdusRepository : IProdusRepository
     {
+        //private MVIMEntities _context;
+        //public ProdusRepository(MVIMEntities context)
+        //{
+        //    _context = context;
+        //}
+
         private MVIMEntities _context = new MVIMEntities();
 
         public bool AdaugaProdus(string descriereProdus, decimal pretProdus, string numeProdus, byte[] poza, int idCategorie, int idProducator)
@@ -37,9 +43,9 @@ namespace MVIM.DAL.Repository
             }
         }
 
-        public byte[] ReturnPhotos()
+        public byte[] ReturnPhotos(int id)
         {
-            var photo = _context.PozaProdus.FirstOrDefault().Poza;
+            var photo = _context.PozaProdus.FirstOrDefault(x => x.IdPozaProdus == id).Poza;
             return photo;
         }
 
@@ -78,7 +84,10 @@ namespace MVIM.DAL.Repository
 
         public List<Produs> GetProduse()
         {
-            return _context.Produs.OrderBy(x => x.NumeProdus).ToList();
+            var produse = _context.Produs.OrderBy(x => x.NumeProdus).ToList();
+
+            return produse;
+
         }
 
         public Produs GetProdus(int id)
@@ -106,9 +115,7 @@ namespace MVIM.DAL.Repository
         }
 
         public bool StergeProdus(int id)
-        {
-            //TODO: Refactorizare cu scoaterea produsului id de peste tot
-
+        {            
             var aFostSters = false;
             var produsPentruSters = _context.Produs.FirstOrDefault(x => x.IdProdus == id);
 
@@ -120,15 +127,17 @@ namespace MVIM.DAL.Repository
                 _context.SaveChanges();
 
                 var pozaProdus = _context.PozaProdus.FirstOrDefault(x => x.IdProdus == id);
-                _context.PozaProdus.Remove(pozaProdus);
+                if (pozaProdus != null)
+                    _context.PozaProdus.Remove(pozaProdus);
                 _context.SaveChanges();
+
+
 
                 _context.Produs.Remove(produsPentruSters);
                 _context.SaveChanges();
                 aFostSters = true;
             }
             return aFostSters;
-
         }
     }
 }

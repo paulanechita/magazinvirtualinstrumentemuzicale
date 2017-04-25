@@ -12,6 +12,13 @@ namespace MagazinVirtualInstrMuzicale.Controllers
 {
     public class LoginController : Controller
     {
+        //private IUserManager _userManager;
+
+        //public LoginController(IUserManager userManager)
+        //{
+        //    _userManager = userManager;
+        //}
+
         private IUserManager _userManager = new UserManager();
 
         [HttpGet]

@@ -10,7 +10,7 @@ namespace MVIM.DAL.Interfete
     {
         bool AdaugaProdus(string descriereProdus, decimal pretProdus, string numeProdus, byte[] poza, int idCategorie, int idProducator);
 
-        byte[] ReturnPhotos(); //testing
+        byte[] ReturnPhotos(int id); //testing
 
         List<Categorie> GetCategorii();
 

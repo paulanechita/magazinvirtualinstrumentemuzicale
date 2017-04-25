@@ -5,15 +5,8 @@
 }
 
 <h2>AfisareProduse</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<br />
 <table class="table">
-    <tr>
-        <th></th>
-    </tr>
-
     @foreach (var item in Model)
     {
         <tr>
@@ -22,6 +15,11 @@
                 <br />
                 Pretul Produsului:   @item.PretProdus
                 <br />
+                Poza Produs:
+                @foreach (var poza in item.PozaProdus)
+                {
+                    <div> <img src='/AdminProduse/LoadPicture?id=@poza.IdPozaProdus' width="250" height="100" /></div>
+                }
                 <br />
             </td>
             <td>
@@ -31,5 +29,4 @@
             </td>
         </tr>
     }
-
 </table>

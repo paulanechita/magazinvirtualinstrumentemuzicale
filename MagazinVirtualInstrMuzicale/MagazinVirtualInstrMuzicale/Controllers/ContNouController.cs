@@ -13,6 +13,11 @@ namespace MagazinVirtualInstrMuzicale.Controllers
     {
         private IUserManager _userManager = new UserManager();
 
+        //public ContNouController(IUserManager userManager)
+        //{
+        //    _userManager = userManager;
+        //}
+
         [HttpGet]
         public ActionResult InregistrareUser()
         {

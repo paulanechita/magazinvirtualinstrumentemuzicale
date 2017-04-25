@@ -9,10 +9,19 @@ namespace MagazinVirtualInstrMuzicale.Common
 {
     public class AutorizareAdministratorCustom : System.Web.Mvc.AuthorizeAttribute
     {
+        //private IUserManager _userManager;
+        //public AutorizareAdministratorCustom(IUserManager userManager)
+        //{
+        //    _userManager = userManager;
+        //}
+
+        private IUserManager _userManager = new UserManager(); 
+        
+        public AutorizareAdministratorCustom() : base()
+        {
+        }
         public string Sesiune;
-
-
-
+        
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             if (UserLoggedIn())
@@ -27,7 +36,7 @@ namespace MagazinVirtualInstrMuzicale.Common
 
         private bool UserLoggedIn()
         {
-            IUserManager _userManager = new UserManager();
+            
             var currentSession = HttpContext.Current.Session;
             if (currentSession["UserLogat"] == null)
             {

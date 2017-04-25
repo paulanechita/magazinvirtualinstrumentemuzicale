@@ -1,1 +1,27 @@
-﻿
+﻿@model IEnumerable<MVIM.DAL.Produs>
+
+@{
+    ViewBag.Title = "AfisareProduse";
+}
+
+<h2 style="text-align:center">Produse</h2>
+<br />
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                Numele Produsului: @item.NumeProdus
+                <br />
+                Pretul Produsului:   @item.PretProdus
+                <br />
+                Poza Produs:
+                @foreach (var poza in item.PozaProdus)
+                {
+                    <div> <img src='/Home/LoadPicture?id=@poza.IdPozaProdus' width="250" height="100" /></div>
+                }
+                <br />
+            </td>
+        </tr>
+    }
+</table>

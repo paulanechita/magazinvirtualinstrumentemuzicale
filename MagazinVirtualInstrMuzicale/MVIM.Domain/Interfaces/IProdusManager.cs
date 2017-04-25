@@ -11,7 +11,7 @@ namespace MVIM.Domain.Interfaces
     {
         bool AdaugaProdus(string descriereProdus, decimal pretProdus, string numeProdus, byte[] poza, int idCategorie, int idProducator);
 
-        byte[] ReturnPhotos();
+        byte[] ReturnPhotos(int id);
 
         List<Categorie> GetCategorii();
 

@@ -12,16 +12,23 @@ namespace MVIM.Domain.Managers
 {
     public class ProdusManager : IProdusManager
     {
-        private IProdusRepository _repository = new ProdusRepository();
+        //private IProdusRepository _repository;
+
+        //public ProdusManager(IProdusRepository produsRepository)
+        //{
+        //    _repository = produsRepository; 
+        //}
+        
+        private ProdusRepository _repository = new ProdusRepository();
 
         public bool AdaugaProdus(string descriereProdus, decimal pretProdus, string numeProdus, byte[] poza, int idCategorie, int idProducator)
         {
             return _repository.AdaugaProdus(descriereProdus, pretProdus, numeProdus, poza, idCategorie, idProducator);
         }
 
-        public byte[] ReturnPhotos()
+        public byte[] ReturnPhotos(int id)
         {
-            return _repository.ReturnPhotos();
+            return _repository.ReturnPhotos(id);
         }
 
         public List<Categorie> GetCategorii()

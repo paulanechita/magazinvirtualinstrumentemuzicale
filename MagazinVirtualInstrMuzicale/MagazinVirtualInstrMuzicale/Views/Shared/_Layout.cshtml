@@ -32,8 +32,7 @@
                             <li><a href="/Login/SignOut">SignOut</a></li>
                         }
                         else if (Session["UserRole"].ToString() == "Administrator")
-                        {
-                            @*<li><a href="/AdminProduse/AdaugaProdus">Produse</a></li>*@
+                        {                            
                             <li><a href="/AdminProduse/OperatiuniProduse">Produse</a></li>
                             <li><a href="/AdminProduse/Users">Users</a></li>
                             <li><a href="/Login/SignOut">Comenzi Plasate</a></li>
@@ -49,7 +48,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
+        <footer style="text-align:center">
             <p>&copy; @DateTime.Now.Year - Copyright  MVIM</p>
         </footer>
     </div>

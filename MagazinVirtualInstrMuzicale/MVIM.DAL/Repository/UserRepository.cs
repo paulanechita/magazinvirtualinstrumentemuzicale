@@ -9,6 +9,13 @@ namespace MVIM.DAL.Repository
 {
     public class UserRepository : IUserRepository
     {
+        //private MVIMEntities _context;
+
+        //public UserRepository(MVIMEntities context)
+        //{
+        //    _context = context;
+        //}
+
         private MVIMEntities _context = new MVIMEntities();
 
         public bool DeleteUser(string username)
