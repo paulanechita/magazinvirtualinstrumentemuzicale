@@ -1,0 +1,20 @@
+﻿@model MagazinVirtualInstrMuzicale.Models.AfisareProduse
+
+<table class="table">
+    @foreach (var item in Model.ListaProduse)
+    {
+        <tr>
+            <td>
+                Numele Produsului: @item.NumeProdus
+                <br />
+                Pretul Produsului:   @item.PretProdus
+                <br />
+                @foreach (var poza in item.PozaProdus)
+                {
+                    <div> <img src='/Home/LoadPicture?id=@poza.IdPozaProdus' width="250" height="100" /></div>
+                }
+                <br />
+            </td>
+        </tr>
+    }
+</table>

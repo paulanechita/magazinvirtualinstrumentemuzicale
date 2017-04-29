@@ -18,7 +18,6 @@ namespace MagazinVirtualInstrMuzicale.Controllers
         //{
         //    _userManager = userManager;
         //}
-
         private IUserManager _userManager = new UserManager();
 
         [HttpGet]

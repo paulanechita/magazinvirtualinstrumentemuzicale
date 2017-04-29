@@ -146,6 +146,9 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Script.js" />
+    <Content Include="Scripts\ScriptCategorii.js" />
+    <Content Include="Scripts\ScriptProducatori.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +194,11 @@
     <Content Include="Views\AdminProduse\AfisareProduse.cshtml" />
     <Content Include="Views\AdminProduse\EditeazaProdus.cshtml" />
     <Content Include="Views\AdminProduse\Users.cshtml" />
+    <Content Include="Views\Home\_productTablePartialView.cshtml" />
+    <Content Include="Views\AdminProduse\_categoriiProdusePartialView.cshtml" />
+    <Content Include="Views\AdminProduse\EditeazaCategorie.cshtml" />
+    <Content Include="Views\AdminProduse\_producatoriProdusePartialView.cshtml" />
+    <Content Include="Views\AdminProduse\EditeazaProducator.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

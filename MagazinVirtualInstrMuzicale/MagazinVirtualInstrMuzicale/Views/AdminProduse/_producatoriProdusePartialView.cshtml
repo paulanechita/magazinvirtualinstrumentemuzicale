@@ -1,0 +1,19 @@
+﻿@model IEnumerable<MVIM.DAL.Producator>
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Nume
+            </td>
+            <td>
+                @Html.ActionLink("Editeaza", "EditeazaProducator", "AdminProduse", new { idProducator = item.IdProducator }, null) |
+
+                <a href="#" class="stergeProducatorClass" id="@item.IdProducator">Sterge</a>
+            </td>
+        </tr>
+    }
+</table>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/ScriptProducatori.js"></script>

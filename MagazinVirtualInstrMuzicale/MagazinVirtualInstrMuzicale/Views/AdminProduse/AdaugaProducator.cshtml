@@ -1,11 +1,15 @@
-﻿<h3>AdaugaProducator</h3>
+﻿@model IEnumerable<MVIM.DAL.Producator>
+<h3>AdaugaProducator</h3>
 
 <form method="post" enctype="multipart/form-data">
     Adauga producator nou:
     <br />
-    <input type="text" name="NumeProducator" />
+    <input type="text" id="numeProducatorId" name="NumeProducator" />
     <br />
-    <input type="submit" value="Adauga" />
+    <input type="button" id="adaugaProducatorId" value="Adauga" />
     <br />
 </form>
 <br />
+<div id="renderProducatoriPartialView">
+    @{ Html.RenderPartial("_producatoriProdusePartialView", Model); }
+</div>

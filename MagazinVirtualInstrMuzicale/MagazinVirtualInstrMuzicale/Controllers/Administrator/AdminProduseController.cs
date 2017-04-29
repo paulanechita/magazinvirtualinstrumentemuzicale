@@ -25,7 +25,7 @@ namespace MagazinVirtualInstrMuzicale.Controllers
         //    _produsManager = produsManager;
         //    _userManager = userManager;
         //}
-        
+
 
         [HttpGet]
         public ActionResult AdaugaProdus()
@@ -36,7 +36,7 @@ namespace MagazinVirtualInstrMuzicale.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdaugaProdus(Models.Produs produsNou, int IdCategorieProdusSelectata,int IdProducatorProdusSelectat)
+        public ActionResult AdaugaProdus(Models.Produs produsNou, int IdCategorieProdusSelectata, int IdProducatorProdusSelectat)
         {
             byte[] pozaArray;
             using (Stream inputStream = produsNou.Upload.InputStream)
@@ -55,8 +55,8 @@ namespace MagazinVirtualInstrMuzicale.Controllers
 
             var isSaved = _produsManager.AdaugaProdus(
                 produsNou.Descriere,
-                (decimal)produsNou.Pret, 
-                produsNou.Nume, 
+                (decimal)produsNou.Pret,
+                produsNou.Nume,
                 pozaArray,
                 IdCategorieProdusSelectata,
                 IdProducatorProdusSelectat
@@ -67,7 +67,7 @@ namespace MagazinVirtualInstrMuzicale.Controllers
             return View(model);
         }
 
-     
+
         public ActionResult LoadPicture(int id)
         {
             var bytePhoto = _produsManager.ReturnPhotos(id);
@@ -81,26 +81,78 @@ namespace MagazinVirtualInstrMuzicale.Controllers
 
         public ActionResult AdaugaCategorie()
         {
-            return View();
+            var categoriiModel = _produsManager.GetCategorii() as IEnumerable<MVIM.DAL.Categorie>;
+            return View(categoriiModel);
         }
 
         [HttpPost]
-        public ActionResult AdaugaCategorie(string NumeCategorie)
+        public ActionResult AdaugaCategorie(string numeCategorie)
         {
-            _produsManager.AdaugaCategorieNoua(NumeCategorie);
-            return View();
+            _produsManager.AdaugaCategorieNoua(numeCategorie);
+
+            var categoriiModel = _produsManager.GetCategorii() as IEnumerable<MVIM.DAL.Categorie>;
+
+            return PartialView("_categoriiProdusePartialView", categoriiModel);
+        }
+
+        public ActionResult EditeazaCategorie(int idCategorie)
+        {
+            var categorieToEdit = _produsManager.GetCategorieById(idCategorie);
+            return View(categorieToEdit);
+        }
+
+        [HttpPost]
+        public ActionResult EditeazaCategorie(Categorie categorieDeEditat)
+        {
+            var updateCategorie = _produsManager.ActualizeazaCategorie(categorieDeEditat);
+            return RedirectToAction("AdaugaCategorie");
+        }
+
+        public ActionResult DeleteCategorie(int idCategorie)
+        {
+            var esteStearsa = _produsManager.StergeCategorie(idCategorie);
+            var categoriiModel = _produsManager.GetCategorii() as IEnumerable<MVIM.DAL.Categorie>;
+            if (esteStearsa)
+            {
+                return PartialView("_categoriiProdusePartialView", categoriiModel);
+            }
+            return PartialView("_categoriiProdusePartialView", categoriiModel);
         }
 
         public ActionResult AdaugaProducator()
         {
-            return View();
+            var producatoriModel = _produsManager.GetProducatori() as IEnumerable<Producator>;
+            return View(producatoriModel);
         }
 
         [HttpPost]
-        public ActionResult AdaugaProducator(string NumeProducator)
+        public ActionResult AdaugaProducator(string numeProducator)
         {
-            _produsManager.AdaugaProducatorNou(NumeProducator);
-            return View();
+            _produsManager.AdaugaProducatorNou(numeProducator);
+            var producatoriModel = _produsManager.GetProducatori() as IEnumerable<Producator>;
+
+            return PartialView("_producatoriProdusePartialView", producatoriModel);
+        }
+
+        public ActionResult DeleteProducator(int idProducator)
+        {
+            var stergeProducator = _produsManager.StergeProducator(idProducator);
+            var producatoriModel = _produsManager.GetProducatori();
+
+            return PartialView("_producatoriProdusePartialView", producatoriModel);
+        }
+
+        public ActionResult EditeazaProducator(int idProducator)
+        {
+            var producatorToEdit = _produsManager.GetProducatorById(idProducator);
+            return View(producatorToEdit);
+        }
+
+        [HttpPost]
+        public ActionResult EditeazaProducator(Producator producatorDeEditat)
+        {
+            var updateProducator = _produsManager.ActualizeazaProducator(producatorDeEditat);
+            return RedirectToAction("AdaugaProducator");
         }
 
         public ActionResult AfisareProduse()
@@ -149,12 +201,14 @@ namespace MagazinVirtualInstrMuzicale.Controllers
                 var clientForUser = _userManager.GetClientForUsername(user.IdUser);
 
                 listaUseri.Add(
-                    new Models.User {
+                    new Models.User
+                    {
                         Email = clientForUser.Email,
                         NumarDeTelefon = clientForUser.NumarTelefon,
                         Nume = clientForUser.Nume,
                         Prenume = clientForUser.Prenume,
-                        Username = user.UserName });
+                        Username = user.UserName
+                    });
             }
             //TODO: Retrieve users.
             return View(listaUseri);
@@ -167,7 +221,7 @@ namespace MagazinVirtualInstrMuzicale.Controllers
             {
                 return RedirectToAction("Users");
             }
-            else 
+            else
                 return RedirectToAction("Users");
         }
 

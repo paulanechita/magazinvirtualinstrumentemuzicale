@@ -1,27 +1,15 @@
-﻿@model IEnumerable<MVIM.DAL.Produs>
-
-@{
-    ViewBag.Title = "AfisareProduse";
-}
-
-<h2 style="text-align:center">Produse</h2>
-<br />
-<table class="table">
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                Numele Produsului: @item.NumeProdus
-                <br />
-                Pretul Produsului:   @item.PretProdus
-                <br />
-                Poza Produs:
-                @foreach (var poza in item.PozaProdus)
-                {
-                    <div> <img src='/Home/LoadPicture?id=@poza.IdPozaProdus' width="250" height="100" /></div>
-                }
-                <br />
-            </td>
-        </tr>
+﻿@model MagazinVirtualInstrMuzicale.Models.AfisareProduse
+<div id="indexContent">
+    @{
+        ViewBag.Title = "AfisareProduse";
     }
-</table>
+
+    <h2 style="text-align:center">Produse</h2>
+    <br />
+    Filtrare dupa Categorie:
+    <br />
+    @Html.DropDownListFor(m => m.IdCategorieSelectata, new SelectList(Model.CategoriiProduse, "IdCategorie", "NumeCategorie"), "  --Selecteaza Categoria--  ", new { id = "categoryFilterId" })
+    <br />
+    
+    <div id="renderTablePartialView">@{ Html.RenderPartial("_productTablePartialView", Model); }</div>
+</div>

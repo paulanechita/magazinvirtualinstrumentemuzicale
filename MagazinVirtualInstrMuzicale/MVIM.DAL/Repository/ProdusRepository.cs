@@ -139,5 +139,70 @@ namespace MVIM.DAL.Repository
             }
             return aFostSters;
         }
+
+        public bool StergeCategorie(int idCategorie)
+        {
+            var isDeleted = false;
+            var productsWithCategory = _context.Produs.Where(p => p.CategorieProdus.Select(c => c.IdCategorie).FirstOrDefault() == idCategorie).ToList();
+
+            if (productsWithCategory.Any())
+                return isDeleted;
+            else
+            {
+                var categorieToDelete = _context.Categorie.Where(c => c.IdCategorie == idCategorie).FirstOrDefault();
+                _context.Categorie.Remove(categorieToDelete);
+                _context.SaveChanges();
+                isDeleted = true;
+            }
+            return isDeleted;
+
+        }
+
+        public bool ActualizeazaCategorie(Categorie categorie)
+        {
+            var esteActualizata = false;
+            var categorieDeActualizat = _context.Categorie.Where(c => c.IdCategorie == categorie.IdCategorie).FirstOrDefault();
+            categorieDeActualizat.NumeCategorie = categorie.NumeCategorie;
+            _context.SaveChanges();
+            esteActualizata = true;
+
+            return esteActualizata;
+        }
+
+        public bool StergeProducator(int idProducator)
+        {
+            var isDeleted = false;
+            var productsWithProducator = _context.Produs.Where(p => p.Producator.IdProducator == idProducator).ToList();
+
+            if (productsWithProducator.Any())
+                return isDeleted;
+            else
+            {
+                var producatorToDelete = _context.Producator.Where(c => c.IdProducator == idProducator).FirstOrDefault();
+                _context.Producator.Remove(producatorToDelete);
+                _context.SaveChanges();
+                isDeleted = true;
+            }
+            return isDeleted;
+        }
+
+        public Producator GetProducatorById(int idProducator)
+        {
+            return _context.Producator.FirstOrDefault(p => p.IdProducator == idProducator);
+        }
+
+        public bool ActualizeazaProducator(Producator producator)
+        {
+            var esteActualizat = false;
+            if (producator != null)
+            {
+                var producatorDeActualizat = _context.Producator.FirstOrDefault(p => p.IdProducator == producator.IdProducator);
+                producatorDeActualizat.Nume = producator.Nume;
+
+                _context.SaveChanges();
+                esteActualizat = true;
+            }
+            return esteActualizat;
+        }
     }
 }

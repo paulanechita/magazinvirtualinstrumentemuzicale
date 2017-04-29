@@ -30,5 +30,15 @@ namespace MVIM.Domain.Interfaces
         bool ActualizeazaProdus(Produs produsActualizat, int idProdus);
 
         bool StergeProdus(int id);
+
+        bool StergeCategorie(int idCategorie);
+
+        bool ActualizeazaCategorie(Categorie categorie);
+
+        bool StergeProducator(int idProducator);
+
+        Producator GetProducatorById(int idProducator);
+
+        bool ActualizeazaProducator(Producator producator);
     }
 }

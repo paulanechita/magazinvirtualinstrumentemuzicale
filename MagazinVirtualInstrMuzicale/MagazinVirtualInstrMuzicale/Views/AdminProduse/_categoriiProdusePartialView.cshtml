@@ -1,0 +1,19 @@
+﻿@model IEnumerable<MVIM.DAL.Categorie>
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+               @item.NumeCategorie
+            </td>
+            <td>
+                @Html.ActionLink("Editeaza", "EditeazaCategorie", "AdminProduse", new { idCategorie = item.IdCategorie }, null) |
+
+                <a href="#" class="stergeCategorieClass" id="@item.IdCategorie">Sterge</a>
+            </td>
+        </tr>
+    }
+</table>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/ScriptCategorii.js"></script>

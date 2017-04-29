@@ -1,9 +1,13 @@
-﻿<form method="post" enctype="multipart/form-data">
+﻿@model IEnumerable<MVIM.DAL.Categorie>
+<form method="post" enctype="multipart/form-data">
     Categorie noua Produs:
     <br />
-    <input type="text" name="NumeCategorie" />
+    <input type="text" name="NumeCategorie" id="valueOfCateogieId" />
     <br />
-    <input type="submit" value="Adauga" />
+    <input type="button" value="Adauga" id="adaugaCategorieId"/>
     <br />
 </form>
 <br />
+<div id="renderCategoriiPartialView">
+    @{ Html.RenderPartial("_categoriiProdusePartialView", Model); }
+</div>

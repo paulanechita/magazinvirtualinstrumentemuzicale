@@ -75,5 +75,30 @@ namespace MVIM.Domain.Managers
         {
             return _repository.StergeProdus(id);
         }
+
+        public bool StergeCategorie(int idCategorie)
+        {
+            return _repository.StergeCategorie(idCategorie);
+        }
+
+        public bool ActualizeazaCategorie(Categorie categorie)
+        {
+            return _repository.ActualizeazaCategorie(categorie);
+        }
+
+        public bool StergeProducator(int idProducator)
+        {
+            return _repository.StergeProducator(idProducator);
+        }
+
+        public Producator GetProducatorById(int idProducator)
+        {
+            return _repository.GetProducatorById(idProducator);
+        }
+
+        public bool ActualizeazaProducator(Producator producator)
+        {
+            return _repository.ActualizeazaProducator(producator);
+        }
     }
 }

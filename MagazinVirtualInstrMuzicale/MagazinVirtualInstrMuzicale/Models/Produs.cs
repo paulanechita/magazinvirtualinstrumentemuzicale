@@ -20,10 +20,7 @@ namespace MagazinVirtualInstrMuzicale.Models
 
         [Required]
         public PozaProdus PozaProdus { get; set; }
-
-        //[Required]
-        //public Categorie CategorieProdus { get; set; }
-
+       
         [Required]
         public Producator ProducatorProdus { get; set; }
 
