@@ -14,6 +14,11 @@
                     <div> <img src='/Home/LoadPicture?id=@poza.IdPozaProdus' width="250" height="100" /></div>
                 }
                 <br />
+                @if (Session["UserRole"] != null && Session["UserRole"].ToString() == "Client")
+                {
+                    <button class="adaugaInCosClass" id="@item.IdProdus">Adauga In Cos</button>
+                }
+                
             </td>
         </tr>
     }

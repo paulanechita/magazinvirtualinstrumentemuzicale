@@ -16,6 +16,7 @@ namespace MagazinVirtualInstrMuzicale.Controllers
         private IUserManager _userManager = new UserManager();
         private IProdusManager _produsManager = new ProdusManager();
         private AfisareProduse _afisareProduse = new AfisareProduse();
+        private ICosManager _cosManager = new CosManager();
 
         public ActionResult Index()
         {
@@ -42,6 +43,16 @@ namespace MagazinVirtualInstrMuzicale.Controllers
         {
             var bytePhoto = _produsManager.ReturnPhotos(id);
             return File(bytePhoto, "image/png");
+        }
+
+        [HttpPost]
+        public ActionResult AdaugaProdusInCos(int idProdus)
+        {
+            var user = _userManager.GetUsers().FirstOrDefault(u=>u.UserName == Session["UserLogat"].ToString());
+            var client = _userManager.GetClientForUsername(user.IdUser);
+
+            var esteAdaugat = _cosManager.AdaugaProdusInCos(idProdus, client.IdClient);
+            return Content("");
         }
     }
 }

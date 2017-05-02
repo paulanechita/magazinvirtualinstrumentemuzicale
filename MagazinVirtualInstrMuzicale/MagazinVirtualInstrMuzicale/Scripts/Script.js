@@ -11,6 +11,18 @@
         });
     });
 
+    $(".adaugaInCosClass").on("click", function () {
+        debugger;
+        var idOfProdus = $(this).attr("id");
+        $.ajax({
+            type: 'POST',
+            url: '/Home/AdaugaProdusInCos?idProdus=' + idOfProdus,
+            success: function (result) {
+                //TODO: Refresh la cos...vedem
+            }
+        });
+    });
+
     $("#adaugaCategorieId").on("click", function () {
         var valueOfCategorie = $("#valueOfCateogieId").val();
         $.ajax({
