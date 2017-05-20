@@ -149,7 +149,9 @@
     <Content Include="Scripts\Script.js" />
     <Content Include="Scripts\ScriptCategorii.js" />
     <Content Include="Scripts\ScriptProducatori.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -157,9 +159,11 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\AutorizareCustom.cs" />
+    <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\SesiuneCurenta.cs" />
     <Compile Include="Common\UnityBootstrapper.cs" />
     <Compile Include="Controllers\Administrator\AdminProduseController.cs" />
+    <Compile Include="Controllers\Client\ClientController.cs" />
     <Compile Include="Controllers\ContNouController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -199,6 +203,7 @@
     <Content Include="Views\AdminProduse\EditeazaCategorie.cshtml" />
     <Content Include="Views\AdminProduse\_producatoriProdusePartialView.cshtml" />
     <Content Include="Views\AdminProduse\EditeazaProducator.cshtml" />
+    <Content Include="Views\Client\Cos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -208,7 +213,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Client\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MVIM.DAL\1. MVIM.DAL.csproj">

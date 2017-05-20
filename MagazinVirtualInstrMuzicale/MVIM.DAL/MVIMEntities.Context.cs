@@ -37,9 +37,7 @@ namespace MVIM.DAL
         public virtual DbSet<Produs> Produs { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<StatusComanda> StatusComanda { get; set; }
-        public virtual DbSet<StatusCos> StatusCos { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<CosProdus> CosProdus { get; set; }
     }
 }

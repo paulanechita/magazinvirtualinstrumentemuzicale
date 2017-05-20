@@ -72,20 +72,10 @@
           </Key>
           <Property Name="IdCos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdClient" Type="int" Nullable="false" />
-          <Property Name="IdCodStatusCos" Type="int" Nullable="false" />
           <Property Name="Data" Type="date" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="CosProdus">
-          <Key>
-            <PropertyRef Name="IdCos" />
-            <PropertyRef Name="IdProdus" />
-            <PropertyRef Name="Cantitate" />
-          </Key>
-          <Property Name="IdCos" Type="int" Nullable="false" />
-          <Property Name="IdProdus" Type="int" Nullable="false" />
           <Property Name="Cantitate" Type="int" Nullable="false" />
+          <Property Name="IdProdus" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="150" Nullable="false" />
         </EntityType>
         <EntityType Name="PozaProdus">
           <Key>
@@ -125,13 +115,6 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
           </Key>
           <Property Name="IdCodStatusComanda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DescriereStatusComanda" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="StatusCos">
-          <Key>
-            <PropertyRef Name="IdCodStatusCos" />
-          </Key>
-          <Property Name="IdCodStatusCos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DescriereStatusCos" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -260,38 +243,14 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Cos_StatusCos">
-          <End Role="StatusCos" Type="Self.StatusCos" Multiplicity="1" />
-          <End Role="Cos" Type="Self.Cos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="StatusCos">
-              <PropertyRef Name="IdCodStatusCos" />
-            </Principal>
-            <Dependent Role="Cos">
-              <PropertyRef Name="IdCodStatusCos" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CosProdus_Cos">
-          <End Role="Cos" Type="Self.Cos" Multiplicity="1" />
-          <End Role="CosProdus" Type="Self.CosProdus" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cos">
-              <PropertyRef Name="IdCos" />
-            </Principal>
-            <Dependent Role="CosProdus">
-              <PropertyRef Name="IdCos" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CosProdus_Produs">
+        <Association Name="FK_Cos_Produs">
           <End Role="Produs" Type="Self.Produs" Multiplicity="1" />
-          <End Role="CosProdus" Type="Self.CosProdus" Multiplicity="*" />
+          <End Role="Cos" Type="Self.Cos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Produs">
               <PropertyRef Name="IdProdus" />
             </Principal>
-            <Dependent Role="CosProdus">
+            <Dependent Role="Cos">
               <PropertyRef Name="IdProdus" />
             </Dependent>
           </ReferentialConstraint>
@@ -345,16 +304,8 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
           <EntitySet Name="Produs" EntityType="Self.Produs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StatusComanda" EntityType="Self.StatusComanda" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="StatusCos" EntityType="Self.StatusCos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CosProdus" EntityType="Self.CosProdus" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CosProdus].[IdCos] AS [IdCos], 
-    [CosProdus].[IdProdus] AS [IdProdus], 
-    [CosProdus].[Cantitate] AS [Cantitate]
-    FROM [dbo].[CosProdus] AS [CosProdus]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_CategorieProdus_Categorie" Association="Self.FK_CategorieProdus_Categorie">
             <End Role="Categorie" EntitySet="Categorie" />
             <End Role="CategorieProdus" EntitySet="CategorieProdus" />
@@ -391,17 +342,9 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             <End Role="Client" EntitySet="Client" />
             <End Role="Cos" EntitySet="Cos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Cos_StatusCos" Association="Self.FK_Cos_StatusCos">
-            <End Role="StatusCos" EntitySet="StatusCos" />
-            <End Role="Cos" EntitySet="Cos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CosProdus_Cos" Association="Self.FK_CosProdus_Cos">
-            <End Role="Cos" EntitySet="Cos" />
-            <End Role="CosProdus" EntitySet="CosProdus" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CosProdus_Produs" Association="Self.FK_CosProdus_Produs">
+          <AssociationSet Name="FK_Cos_Produs" Association="Self.FK_Cos_Produs">
             <End Role="Produs" EntitySet="Produs" />
-            <End Role="CosProdus" EntitySet="CosProdus" />
+            <End Role="Cos" EntitySet="Cos" />
           </AssociationSet>
           <AssociationSet Name="FK_PozaProdus_Produs" Association="Self.FK_PozaProdus_Produs">
             <End Role="Produs" EntitySet="Produs" />
@@ -501,11 +444,12 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
           </Key>
           <Property Name="IdCos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdClient" Type="Int32" Nullable="false" />
-          <Property Name="IdCodStatusCos" Type="Int32" Nullable="false" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cantitate" Type="Int32" Nullable="false" />
+          <Property Name="IdProdus" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Cos_Client" FromRole="Cos" ToRole="Client" />
-          <NavigationProperty Name="StatusCos" Relationship="Self.FK_Cos_StatusCos" FromRole="Cos" ToRole="StatusCos" />
-          <NavigationProperty Name="CosProdus" Relationship="Self.FK_CosProdus_Cos" FromRole="Cos" ToRole="CosProdus" />
+          <NavigationProperty Name="Produs" Relationship="Self.FK_Cos_Produs" FromRole="Cos" ToRole="Produs" />
         </EntityType>
         <EntityType Name="PozaProdus">
           <Key>
@@ -535,9 +479,9 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
           <Property Name="DescriereProdus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="CategorieProdus" Relationship="Self.FK_CategorieProdus_Produs" FromRole="Produs" ToRole="CategorieProdus" />
           <NavigationProperty Name="ComandaProdus" Relationship="Self.FK_ComandaProdus_Produs" FromRole="Produs" ToRole="ComandaProdus" />
+          <NavigationProperty Name="Cos" Relationship="Self.FK_Cos_Produs" FromRole="Produs" ToRole="Cos" />
           <NavigationProperty Name="PozaProdus" Relationship="Self.FK_PozaProdus_Produs" FromRole="Produs" ToRole="PozaProdus" />
           <NavigationProperty Name="Producator" Relationship="Self.FK_Produs_Producator" FromRole="Produs" ToRole="Producator" />
-          <NavigationProperty Name="CosProdus" Relationship="Self.FK_CosProdus_Produs" FromRole="Produs" ToRole="CosProdus" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -554,14 +498,6 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
           <Property Name="IdCodStatusComanda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DescriereStatusComanda" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Comanda" Relationship="Self.FK_Comanda_StatusComanda" FromRole="StatusComanda" ToRole="Comanda" />
-        </EntityType>
-        <EntityType Name="StatusCos">
-          <Key>
-            <PropertyRef Name="IdCodStatusCos" />
-          </Key>
-          <Property Name="IdCodStatusCos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DescriereStatusCos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Cos" Relationship="Self.FK_Cos_StatusCos" FromRole="StatusCos" ToRole="Cos" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -583,18 +519,6 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
           <Property Name="Parola" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Client_User" FromRole="User" ToRole="Client" />
           <NavigationProperty Name="Rol" Relationship="Self.FK_User_Rol" FromRole="User" ToRole="Rol" />
-        </EntityType>
-        <EntityType Name="CosProdus">
-          <Key>
-            <PropertyRef Name="IdCos" />
-            <PropertyRef Name="IdProdus" />
-            <PropertyRef Name="Cantitate" />
-          </Key>
-          <Property Name="IdCos" Type="Int32" Nullable="false" />
-          <Property Name="IdProdus" Type="Int32" Nullable="false" />
-          <Property Name="Cantitate" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cos" Relationship="Self.FK_CosProdus_Cos" FromRole="CosProdus" ToRole="Cos" />
-          <NavigationProperty Name="Produs" Relationship="Self.FK_CosProdus_Produs" FromRole="CosProdus" ToRole="Produs" />
         </EntityType>
         <Association Name="FK_Comanda_Adresa">
           <End Role="Adresa" Type="Self.Adresa" Multiplicity="1" />
@@ -704,27 +628,15 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Cos_StatusCos">
-          <End Role="StatusCos" Type="Self.StatusCos" Multiplicity="1" />
+        <Association Name="FK_Cos_Produs">
+          <End Role="Produs" Type="Self.Produs" Multiplicity="1" />
           <End Role="Cos" Type="Self.Cos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="StatusCos">
-              <PropertyRef Name="IdCodStatusCos" />
+            <Principal Role="Produs">
+              <PropertyRef Name="IdProdus" />
             </Principal>
             <Dependent Role="Cos">
-              <PropertyRef Name="IdCodStatusCos" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CosProdus_Cos">
-          <End Role="Cos" Type="Self.Cos" Multiplicity="1" />
-          <End Role="CosProdus" Type="Self.CosProdus" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cos">
-              <PropertyRef Name="IdCos" />
-            </Principal>
-            <Dependent Role="CosProdus">
-              <PropertyRef Name="IdCos" />
+              <PropertyRef Name="IdProdus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -749,18 +661,6 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             </Principal>
             <Dependent Role="Produs">
               <PropertyRef Name="IdProducator" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CosProdus_Produs">
-          <End Role="Produs" Type="Self.Produs" Multiplicity="1" />
-          <End Role="CosProdus" Type="Self.CosProdus" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Produs">
-              <PropertyRef Name="IdProdus" />
-            </Principal>
-            <Dependent Role="CosProdus">
-              <PropertyRef Name="IdProdus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -789,10 +689,8 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
           <EntitySet Name="Produs" EntityType="Self.Produs" />
           <EntitySet Name="Rol" EntityType="Self.Rol" />
           <EntitySet Name="StatusComanda" EntityType="Self.StatusComanda" />
-          <EntitySet Name="StatusCos" EntityType="Self.StatusCos" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="CosProdus" EntityType="Self.CosProdus" />
           <AssociationSet Name="FK_Comanda_Adresa" Association="Self.FK_Comanda_Adresa">
             <End Role="Adresa" EntitySet="Adresa" />
             <End Role="Comanda" EntitySet="Comanda" />
@@ -829,13 +727,9 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
             <End Role="Produs" EntitySet="Produs" />
             <End Role="ComandaProdus" EntitySet="ComandaProdus" />
           </AssociationSet>
-          <AssociationSet Name="FK_Cos_StatusCos" Association="Self.FK_Cos_StatusCos">
-            <End Role="StatusCos" EntitySet="StatusCos" />
+          <AssociationSet Name="FK_Cos_Produs" Association="Self.FK_Cos_Produs">
+            <End Role="Produs" EntitySet="Produs" />
             <End Role="Cos" EntitySet="Cos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CosProdus_Cos" Association="Self.FK_CosProdus_Cos">
-            <End Role="Cos" EntitySet="Cos" />
-            <End Role="CosProdus" EntitySet="CosProdus" />
           </AssociationSet>
           <AssociationSet Name="FK_PozaProdus_Produs" Association="Self.FK_PozaProdus_Produs">
             <End Role="Produs" EntitySet="Produs" />
@@ -844,10 +738,6 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
           <AssociationSet Name="FK_Produs_Producator" Association="Self.FK_Produs_Producator">
             <End Role="Producator" EntitySet="Producator" />
             <End Role="Produs" EntitySet="Produs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CosProdus_Produs" Association="Self.FK_CosProdus_Produs">
-            <End Role="Produs" EntitySet="Produs" />
-            <End Role="CosProdus" EntitySet="CosProdus" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Rol" Association="Self.FK_User_Rol">
             <End Role="Rol" EntitySet="Rol" />
@@ -932,8 +822,10 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
               <MappingFragment StoreEntitySet="Cos">
                 <ScalarProperty Name="IdCos" ColumnName="IdCos" />
                 <ScalarProperty Name="IdClient" ColumnName="IdClient" />
-                <ScalarProperty Name="IdCodStatusCos" ColumnName="IdCodStatusCos" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+                <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -981,14 +873,6 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="StatusCos">
-            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.StatusCos">
-              <MappingFragment StoreEntitySet="StatusCos">
-                <ScalarProperty Name="IdCodStatusCos" ColumnName="IdCodStatusCos" />
-                <ScalarProperty Name="DescriereStatusCos" ColumnName="DescriereStatusCos" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -1007,15 +891,6 @@ warning 6002: The table/view 'MagazinInstrumenteDb.dbo.CosProdus' does not have 
                 <ScalarProperty Name="IdRol" ColumnName="IdRol" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Parola" ColumnName="Parola" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CosProdus">
-            <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.CosProdus">
-              <MappingFragment StoreEntitySet="CosProdus">
-                <ScalarProperty Name="IdCos" ColumnName="IdCos" />
-                <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
-                <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

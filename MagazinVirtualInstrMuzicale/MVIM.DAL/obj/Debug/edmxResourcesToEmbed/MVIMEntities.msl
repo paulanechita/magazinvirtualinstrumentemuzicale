@@ -73,8 +73,10 @@
         <MappingFragment StoreEntitySet="Cos">
           <ScalarProperty Name="IdCos" ColumnName="IdCos" />
           <ScalarProperty Name="IdClient" ColumnName="IdClient" />
-          <ScalarProperty Name="IdCodStatusCos" ColumnName="IdCodStatusCos" />
           <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+          <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -122,14 +124,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="StatusCos">
-      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.StatusCos">
-        <MappingFragment StoreEntitySet="StatusCos">
-          <ScalarProperty Name="IdCodStatusCos" ColumnName="IdCodStatusCos" />
-          <ScalarProperty Name="DescriereStatusCos" ColumnName="DescriereStatusCos" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -148,15 +142,6 @@
           <ScalarProperty Name="IdRol" ColumnName="IdRol" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Parola" ColumnName="Parola" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CosProdus">
-      <EntityTypeMapping TypeName="MagazinInstrumenteDbModel.CosProdus">
-        <MappingFragment StoreEntitySet="CosProdus">
-          <ScalarProperty Name="IdCos" ColumnName="IdCos" />
-          <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
-          <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

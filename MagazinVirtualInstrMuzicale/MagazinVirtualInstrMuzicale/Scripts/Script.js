@@ -18,7 +18,7 @@
             type: 'POST',
             url: '/Home/AdaugaProdusInCos?idProdus=' + idOfProdus,
             success: function (result) {
-                //TODO: Refresh la cos...vedem
+                window.location.reload();
             }
         });
     });

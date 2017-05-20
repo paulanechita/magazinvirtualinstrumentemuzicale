@@ -73,9 +73,6 @@
     <Compile Include="Cos.cs">
       <DependentUpon>MVIMEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="CosProdus.cs">
-      <DependentUpon>MVIMEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Interfete\ICosRepository.cs" />
     <Compile Include="Interfete\IProdusRepository.cs" />
     <Compile Include="Interfete\IUserRepository.cs" />
@@ -111,9 +108,6 @@
       <DependentUpon>MVIMEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="StatusComanda.cs">
-      <DependentUpon>MVIMEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StatusCos.cs">
       <DependentUpon>MVIMEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">

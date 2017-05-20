@@ -14,20 +14,14 @@ namespace MVIM.DAL
     
     public partial class Cos
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cos()
-        {
-            this.CosProdus = new HashSet<CosProdus>();
-        }
-    
         public int IdCos { get; set; }
         public int IdClient { get; set; }
-        public int IdCodStatusCos { get; set; }
         public System.DateTime Data { get; set; }
+        public int Cantitate { get; set; }
+        public int IdProdus { get; set; }
+        public string Status { get; set; }
     
         public virtual Client Client { get; set; }
-        public virtual StatusCos StatusCos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CosProdus> CosProdus { get; set; }
+        public virtual Produs Produs { get; set; }
     }
 }

@@ -29,14 +29,15 @@
                         }
                         else if (Session["UserRole"].ToString() == "Client")
                         {
-                            <li><a href="/Login/SignOut">SignOut</a></li>
+                            <li><a href="/Client/SignOut">SignOut</a></li>
+                            <li id="cosId" style="@ViewBag.CandAvemProduseColoratRosu"><a href="/Client/Cos">Cos</a></li>
                         }
                         else if (Session["UserRole"].ToString() == "Administrator")
-                        {                            
+                        {
                             <li><a href="/AdminProduse/OperatiuniProduse">Produse</a></li>
                             <li><a href="/AdminProduse/Users">Users</a></li>
-                            <li><a href="/Login/SignOut">Comenzi Plasate</a></li>
-                            <li><a href="/Login/SignOut">SignOut</a></li>
+                            <li><a href="/Client/SignOut">Comenzi Plasate</a></li>
+                            <li><a href="/Client/SignOut">SignOut</a></li>
                         }
                     }
                     

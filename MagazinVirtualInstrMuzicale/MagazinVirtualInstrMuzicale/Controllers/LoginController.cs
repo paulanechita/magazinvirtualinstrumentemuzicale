@@ -40,12 +40,5 @@ namespace MagazinVirtualInstrMuzicale.Controllers
             }
                 return View();
         }
-
-        public ActionResult SignOut()
-        {
-            FormsAuthentication.SignOut();
-            Session.Abandon();
-            return RedirectToAction("Login","Login"); 
-        }
     }
 }
