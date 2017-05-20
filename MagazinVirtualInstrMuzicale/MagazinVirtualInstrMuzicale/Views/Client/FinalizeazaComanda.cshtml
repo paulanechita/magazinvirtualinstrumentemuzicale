@@ -1,0 +1,73 @@
+﻿@model MagazinVirtualInstrMuzicale.Models.FinalizareComandaModel
+
+@{
+    ViewBag.Title = "FinalizeazaComanda";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>LISTA PRODUSE</h2>
+<br />
+<br />
+@{ decimal total = 0;}
+<table disabled class="table">
+    <tr>
+        <th>
+            Denumirea Produsului
+        </th>
+        <th>
+            Cantitate
+        </th>
+        <th>
+            Pret
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.ListaProduseInCos)
+    {
+        total = total + item.Produs.PretProdus;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produs.NumeProdus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantitate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produs.PretProdus) &nbsp; RON
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<label style="float:right">TOTAL: @total.ToString("#.##") RON</label>
+<br />
+<br />
+<form action="/Client/FinalizeazaComanda" method="post">
+    Strada:
+    <br />
+    <input name="Strada" />
+    <br />
+    Numar:
+    <br />
+    <input name="Numar" />
+    <br />
+    Oras:
+    <br />
+    <input name="Oras" />
+    <br />
+    Judet:
+    <br />
+    <input name="Judet" />
+    <br />
+    CodPostal:
+    <br />
+    <input name="CodPostal" />
+    <br />
+    Tara:
+    <br />
+    <input name="Tara" />
+    <br />
+    <br />
+
+    <a href="~/Client/FinalizeazaComanda"> <input type="submit" value="Trimite Comanda"></a>
+</form> 

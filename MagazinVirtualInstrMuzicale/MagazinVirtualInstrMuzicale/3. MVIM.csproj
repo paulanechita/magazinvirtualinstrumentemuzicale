@@ -160,6 +160,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\AutorizareCustom.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\EmailHelper.cs" />
     <Compile Include="Common\SesiuneCurenta.cs" />
     <Compile Include="Common\UnityBootstrapper.cs" />
     <Compile Include="Controllers\Administrator\AdminProduseController.cs" />
@@ -173,6 +174,7 @@
     <Compile Include="Models\AdaugaProdusModel.cs" />
     <Compile Include="Models\AfisareProduse.cs" />
     <Compile Include="Models\ContNouModel.cs" />
+    <Compile Include="Models\FinalizareComandaModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Produs.cs" />
     <Compile Include="Models\User.cs" />
@@ -204,6 +206,7 @@
     <Content Include="Views\AdminProduse\_producatoriProdusePartialView.cshtml" />
     <Content Include="Views\AdminProduse\EditeazaProducator.cshtml" />
     <Content Include="Views\Client\Cos.cshtml" />
+    <Content Include="Views\Client\FinalizeazaComanda.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

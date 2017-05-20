@@ -5,6 +5,9 @@ using MVIM.Domain.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -48,9 +51,66 @@ namespace MagazinVirtualInstrMuzicale.Controllers.Client
             return RedirectToAction("Cos");
         }
 
+        [HttpGet]
         public ActionResult FinalizeazaComanda()
         {
-            return View();
+            var userLogat = Session["UserLogat"].ToString();
+            var user = _userManager.GetUsers().Where(u => u.UserName == userLogat).FirstOrDefault();
+            var client = _userManager.GetClientForUsername(user.IdUser);
+
+            var listaProduseInCos = _cosManager.GetCartProducts(client.IdClient);
+
+            var model = new FinalizareComandaModel();
+            model.ListaProduseInCos = listaProduseInCos;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult FinalizeazaComanda(FinalizareComandaModel finalizeazaComanda)
+        {
+            var userLogat = Session["UserLogat"].ToString();
+            var user = _userManager.GetUsers().Where(u => u.UserName == userLogat).FirstOrDefault();
+            var client = _userManager.GetClientForUsername(user.IdUser);
+
+            var listaProduseInCos = _cosManager.GetCartProducts(client.IdClient);
+
+            var sb = new StringBuilder();
+
+            decimal total = 0;
+
+            foreach (var produs in listaProduseInCos)
+            {
+                sb.Append(Environment.NewLine);
+                sb.Append("Denumire Produs: " + produs.Produs.NumeProdus + "  , " + "Cantitate: " + produs.Cantitate + "  , " + "Pret: " + produs.Produs.PretProdus * produs.Cantitate);
+                total = total + produs.Produs.PretProdus;
+            }
+            sb.Append(Environment.NewLine);
+            sb.Append("TOTAL: " + total.ToString("#.##") + "RON");
+            sb.Append(Environment.NewLine);
+            sb.Append("Produsele vor fi expediate la adresa: ");
+            sb.Append(Environment.NewLine);
+            sb.Append("Strada: " + finalizeazaComanda.Strada + " , " + "Numar: " + finalizeazaComanda.Numar);
+            sb.Append(Environment.NewLine);
+            sb.Append("Oras: " + finalizeazaComanda.Oras + " , " + "Cod postal: " + finalizeazaComanda.CodPostal + ", " + finalizeazaComanda.Tara);
+            sb.Append(Environment.NewLine);
+            sb.Append("Produsele va for fi livrate in data de: " + DateTime.Now.AddDays(3));
+            sb.Append(Environment.NewLine);
+            sb.Append("Va multumim!");
+
+            var emailBody = sb.ToString();
+
+
+
+
+            EmailHelper.SendEmail(
+                Constants.EmailFrom, 
+                client.Email,
+                Constants.FromName, 
+                Constants.EmailTimeStamp + DateTime.Now,
+                emailBody);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
