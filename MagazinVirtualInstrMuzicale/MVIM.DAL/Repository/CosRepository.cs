@@ -65,5 +65,22 @@ namespace MVIM.DAL.Repository
             isDeleted = true;
             return isDeleted;
         }
+
+        public bool AdaugaComanda(Adresa adresa, int idClient, IEnumerable<Cos> listaProduse)
+        {
+            var client = _context.Client.FirstOrDefault(c => c.IdClient == idClient);
+
+            var comanda = new Comanda();
+            comanda.Adresa = adresa;
+            comanda.Email = client.Email;
+            comanda.Data = DateTime.Now;
+
+            foreach (var produs in listaProduse)
+            {
+                //TODO: maine
+            }
+
+            return true;
+        }
     }
 }

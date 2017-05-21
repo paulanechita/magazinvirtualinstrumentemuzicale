@@ -22,5 +22,10 @@ namespace MVIM.Domain.Managers
         {
             return _cosRepository.DeleteProdusDinCos(idCos);
         }
+
+        public bool AdaugaComanda(Adresa adresa, int idClient, IEnumerable<Cos> listaProduse)
+        {
+            return _cosRepository.AdaugaComanda(adresa, idClient, listaProduse);
+        }
     }
 }

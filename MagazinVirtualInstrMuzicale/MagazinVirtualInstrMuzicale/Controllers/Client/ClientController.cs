@@ -1,5 +1,6 @@
 ﻿using MagazinVirtualInstrMuzicale.Common;
 using MagazinVirtualInstrMuzicale.Models;
+using MVIM.DAL;
 using MVIM.Domain.Interfaces;
 using MVIM.Domain.Managers;
 using System;
@@ -85,6 +86,7 @@ namespace MagazinVirtualInstrMuzicale.Controllers.Client
                 sb.Append("Denumire Produs: " + produs.Produs.NumeProdus + "  , " + "Cantitate: " + produs.Cantitate + "  , " + "Pret: " + produs.Produs.PretProdus * produs.Cantitate);
                 total = total + produs.Produs.PretProdus;
             }
+
             sb.Append(Environment.NewLine);
             sb.Append("TOTAL: " + total.ToString("#.##") + "RON");
             sb.Append(Environment.NewLine);
@@ -100,15 +102,26 @@ namespace MagazinVirtualInstrMuzicale.Controllers.Client
 
             var emailBody = sb.ToString();
 
+            var adresa = new Adresa()
+            {
+                Strada = finalizeazaComanda.Strada,
+                CodPostal = finalizeazaComanda.CodPostal,
+                Judet = finalizeazaComanda.Judet,
+                Numar = finalizeazaComanda.Numar.ToString(),
+                Oras = finalizeazaComanda.Oras
+            };
 
+            var esteComandaAdaugata = _cosManager.AdaugaComanda(adresa, client.IdClient, listaProduseInCos);
 
-
-            EmailHelper.SendEmail(
-                Constants.EmailFrom, 
+            if (esteComandaAdaugata)
+            {
+                EmailHelper.SendEmail(
+                Constants.EmailFrom,
                 client.Email,
-                Constants.FromName, 
+                Constants.FromName,
                 Constants.EmailTimeStamp + DateTime.Now,
                 emailBody);
+            }
 
             return RedirectToAction("Index", "Home");
         }

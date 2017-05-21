@@ -14,5 +14,7 @@ namespace MVIM.Domain.Interfaces
         List<Cos> GetCartProducts(int idClient);
 
         bool DeleteProdusDinCos(int idCos);
+
+        bool AdaugaComanda(Adresa adresa, int idClient, IEnumerable<Cos> listaProduse);
     }
 }
