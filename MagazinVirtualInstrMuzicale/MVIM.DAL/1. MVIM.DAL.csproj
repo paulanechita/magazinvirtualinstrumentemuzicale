@@ -70,6 +70,7 @@
     <Compile Include="ComandaProdus.cs">
       <DependentUpon>MVIMEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Constante.cs" />
     <Compile Include="Cos.cs">
       <DependentUpon>MVIMEntities.tt</DependentUpon>
     </Compile>

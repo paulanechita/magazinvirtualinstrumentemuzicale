@@ -79,24 +79,30 @@ namespace MagazinVirtualInstrMuzicale.Controllers.Client
             var sb = new StringBuilder();
 
             decimal total = 0;
-
+            sb.Append("S-au comandat urmatoarele produse:");
+            sb.Append(Environment.NewLine);
             foreach (var produs in listaProduseInCos)
             {
                 sb.Append(Environment.NewLine);
-                sb.Append("Denumire Produs: " + produs.Produs.NumeProdus + "  , " + "Cantitate: " + produs.Cantitate + "  , " + "Pret: " + produs.Produs.PretProdus * produs.Cantitate);
+                sb.Append("Denumire Produs: " + produs.Produs.NumeProdus + "  , " + "Cantitate: " + produs.Cantitate + "  , " + "Pret: " + (produs.Produs.PretProdus * produs.Cantitate).ToString("#.##") + " RON");
                 total = total + produs.Produs.PretProdus;
             }
 
             sb.Append(Environment.NewLine);
-            sb.Append("TOTAL: " + total.ToString("#.##") + "RON");
             sb.Append(Environment.NewLine);
+            sb.Append("TOTAL: " + total.ToString("#.##") + " RON");
+            sb.Append(Environment.NewLine);
+            sb.Append(Environment.NewLine);
+
             sb.Append("Produsele vor fi expediate la adresa: ");
             sb.Append(Environment.NewLine);
             sb.Append("Strada: " + finalizeazaComanda.Strada + " , " + "Numar: " + finalizeazaComanda.Numar);
             sb.Append(Environment.NewLine);
             sb.Append("Oras: " + finalizeazaComanda.Oras + " , " + "Cod postal: " + finalizeazaComanda.CodPostal + ", " + finalizeazaComanda.Tara);
             sb.Append(Environment.NewLine);
+            sb.Append(Environment.NewLine);
             sb.Append("Produsele va for fi livrate in data de: " + DateTime.Now.AddDays(3));
+            sb.Append(Environment.NewLine);
             sb.Append(Environment.NewLine);
             sb.Append("Va multumim!");
 

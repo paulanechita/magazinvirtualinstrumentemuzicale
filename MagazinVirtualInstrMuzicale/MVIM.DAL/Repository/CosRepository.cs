@@ -70,15 +70,37 @@ namespace MVIM.DAL.Repository
         {
             var client = _context.Client.FirstOrDefault(c => c.IdClient == idClient);
 
+            var statusComanda = new StatusComanda();
+            statusComanda.DescriereStatusComanda = Constante.InAsteptare;
+
             var comanda = new Comanda();
             comanda.Adresa = adresa;
             comanda.Email = client.Email;
             comanda.Data = DateTime.Now;
+            comanda.Adresa = adresa;
+            comanda.Client = client;
+            comanda.StatusComanda = statusComanda;
 
+            _context.Adresa.Add(adresa);
+            _context.Comanda.Add(comanda);
+            
+            var comandaProdus = new List<ComandaProdus>();
             foreach (var produs in listaProduse)
             {
-                //TODO: maine
-            }
+                _context.ComandaProdus.Add(new ComandaProdus()
+                {
+                    Cantitate = produs.Cantitate,
+                    Comanda = comanda,
+                    DescriereProdus = produs.Produs.DescriereProdus,
+                    NumeProdus = produs.Produs.NumeProdus,
+                    PretProdus = produs.Produs.PretProdus,
+                    Produs = produs.Produs,
+                });
+
+                _context.Cos.Remove(produs);
+            }            
+
+            _context.SaveChanges();
 
             return true;
         }
