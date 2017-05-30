@@ -7,21 +7,16 @@
 
 <h2>ComenziPlasate</h2>
 
-<table class="table">
+@foreach (var comenzi in Model.ListaComenzi)
+{
+    <strong> Nume Client: @comenzi.Client.Nume &nbsp; Numar Comanda: @comenzi.IdComanda</strong>
+    <br />
+    var produsePtComanda = Model.ListaProduseComandate.Where(x => x.IdComanda == comenzi.IdComanda).ToList();
 
-    @foreach (var comenzi in Model.ListaComenzi)
+    foreach (var produs in produsePtComanda)
     {
-       <strong> Nume Client: @comenzi.Client.Nume &nbsp; Numar Comanda: @comenzi.IdComanda</strong>
-        <br />
-        var produsePtComanda = Model.ListaProduseComandate.Where(x => x.IdComanda == comenzi.IdComanda).ToList();
-
-        foreach (var produs in produsePtComanda)
-        {
-            <tr>@(produs.NumeProdus + " " + produs.PretProdus + " " + produs.Cantitate)</tr>
-                <br />
-        }
-        <br >
-
+        <div style="position:relative; left:50px;">@(produs.NumeProdus + " " + produs.PretProdus + " " + produs.Cantitate)</div>
     }
+    <br>
+}
 
-</table>
