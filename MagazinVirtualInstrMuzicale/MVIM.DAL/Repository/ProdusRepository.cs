@@ -1,4 +1,5 @@
-﻿using MVIM.DAL.Interfete;
+﻿using MVIM.DAL.DataModels;
+using MVIM.DAL.Interfete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -203,6 +204,16 @@ namespace MVIM.DAL.Repository
                 esteActualizat = true;
             }
             return esteActualizat;
+        }
+
+        public ComenziPlasateDataModel GetProduseComandate()
+        {
+            var comenziPlasateDataModel = new ComenziPlasateDataModel();
+
+            comenziPlasateDataModel.ListaComenzi = _context.Comanda.ToList();
+            comenziPlasateDataModel.ListaProduseComandate = _context.ComandaProdus.ToList();
+
+            return comenziPlasateDataModel;
         }
     }
 }

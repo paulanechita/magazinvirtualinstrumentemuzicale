@@ -7,7 +7,7 @@
             <td>
                 Numele Produsului: @item.NumeProdus
                 <br />
-                Pretul Produsului:   @item.PretProdus
+                Pretul Produsului:   @(item.PretProdus.ToString("#.##") + " RON")
                 <br />
                 @foreach (var poza in item.PozaProdus)
                 {

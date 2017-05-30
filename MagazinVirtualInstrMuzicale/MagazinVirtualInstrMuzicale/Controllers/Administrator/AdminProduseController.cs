@@ -234,5 +234,13 @@ namespace MagazinVirtualInstrMuzicale.Controllers
 
             return model;
         }
+
+        [HttpGet]
+        public ActionResult ComenziPlasate()
+        {
+            var produseComandate = _produsManager.GetProduseComandate();
+
+            return View(produseComandate);
+        }
     }
 }

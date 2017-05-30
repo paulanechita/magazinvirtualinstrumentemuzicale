@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVIM.DAL.DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,5 +40,7 @@ namespace MVIM.DAL.Interfete
         Producator GetProducatorById(int idProducator);
 
         bool ActualizeazaProducator(Producator producator);
+
+        ComenziPlasateDataModel GetProduseComandate();
     }
 }

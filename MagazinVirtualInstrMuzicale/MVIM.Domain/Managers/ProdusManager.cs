@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MVIM.DAL;
+using MVIM.DAL.DataModels;
 
 namespace MVIM.Domain.Managers
 {
@@ -99,6 +100,11 @@ namespace MVIM.Domain.Managers
         public bool ActualizeazaProducator(Producator producator)
         {
             return _repository.ActualizeazaProducator(producator);
+        }
+
+        public ComenziPlasateDataModel GetProduseComandate()
+        {
+            return _repository.GetProduseComandate();
         }
     }
 }

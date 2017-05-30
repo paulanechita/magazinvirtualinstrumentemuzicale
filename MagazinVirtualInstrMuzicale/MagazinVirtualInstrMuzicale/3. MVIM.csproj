@@ -173,6 +173,7 @@
     </Compile>
     <Compile Include="Models\AdaugaProdusModel.cs" />
     <Compile Include="Models\AfisareProduse.cs" />
+    <Compile Include="Models\ComenziPlasateModel.cs" />
     <Compile Include="Models\ContNouModel.cs" />
     <Compile Include="Models\FinalizareComandaModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -207,6 +208,7 @@
     <Content Include="Views\AdminProduse\EditeazaProducator.cshtml" />
     <Content Include="Views\Client\Cos.cshtml" />
     <Content Include="Views\Client\FinalizeazaComanda.cshtml" />
+    <Content Include="Views\AdminProduse\ComenziPlasate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

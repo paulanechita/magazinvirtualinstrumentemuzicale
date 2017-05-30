@@ -1,0 +1,27 @@
+﻿@model MVIM.DAL.DataModels.ComenziPlasateDataModel
+
+@{
+    ViewBag.Title = "ComenziPlasate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ComenziPlasate</h2>
+
+<table class="table">
+
+    @foreach (var comenzi in Model.ListaComenzi)
+    {
+       <strong> Nume Client: @comenzi.Client.Nume &nbsp; Numar Comanda: @comenzi.IdComanda</strong>
+        <br />
+        var produsePtComanda = Model.ListaProduseComandate.Where(x => x.IdComanda == comenzi.IdComanda).ToList();
+
+        foreach (var produs in produsePtComanda)
+        {
+            <tr>@(produs.NumeProdus + " " + produs.PretProdus + " " + produs.Cantitate)</tr>
+                <br />
+        }
+        <br >
+
+    }
+
+</table>

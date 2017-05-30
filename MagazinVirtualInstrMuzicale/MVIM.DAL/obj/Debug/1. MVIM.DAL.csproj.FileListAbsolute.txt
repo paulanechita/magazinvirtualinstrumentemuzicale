@@ -27,3 +27,4 @@ D:\!LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\
 D:\!LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\obj\Debug\MVIM.DAL.dll
 D:\!LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\obj\Debug\MVIM.DAL.pdb
 D:\!LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\obj\Debug\1. MVIM.DAL.csprojResolveAssemblyReference.cache
+C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\obj\Debug\1. MVIM.DAL.csprojResolveAssemblyReference.cache

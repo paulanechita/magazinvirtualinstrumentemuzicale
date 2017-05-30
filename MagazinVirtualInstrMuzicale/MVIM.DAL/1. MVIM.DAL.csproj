@@ -74,6 +74,7 @@
     <Compile Include="Cos.cs">
       <DependentUpon>MVIMEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModels\ComenziPlasateDataModel.cs" />
     <Compile Include="Interfete\ICosRepository.cs" />
     <Compile Include="Interfete\IProdusRepository.cs" />
     <Compile Include="Interfete\IUserRepository.cs" />
