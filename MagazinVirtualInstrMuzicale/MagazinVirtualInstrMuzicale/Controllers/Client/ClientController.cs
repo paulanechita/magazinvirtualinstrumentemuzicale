@@ -22,6 +22,7 @@ namespace MagazinVirtualInstrMuzicale.Controllers.Client
         private IProdusManager _produsManager = new ProdusManager();
         private AfisareProduse _afisareProduse = new AfisareProduse();
         private ICosManager _cosManager = new CosManager();
+        private IComandaManager _comandaManager = new ComandaManager();
 
         // GET: Client
         public ActionResult Cos()
@@ -64,6 +65,14 @@ namespace MagazinVirtualInstrMuzicale.Controllers.Client
             var model = new FinalizareComandaModel();
             model.ListaProduseInCos = listaProduseInCos;
 
+            var produse = _produsManager.GetProduseComandate().ListaComenzi.Where(x => x.Client.IdClient == client.IdClient).ToList();
+            model.Adrese = new List<Adresa>();
+
+            foreach (var item in produse)
+            {
+                model.Adrese.Add(item.Adresa);
+            }
+             
             return View(model);
         }
 

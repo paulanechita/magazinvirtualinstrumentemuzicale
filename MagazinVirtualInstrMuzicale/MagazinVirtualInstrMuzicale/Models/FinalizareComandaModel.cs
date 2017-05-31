@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVIM.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,5 +21,7 @@ namespace MagazinVirtualInstrMuzicale.Models
         public string CodPostal { get; set; }
 
         public string Tara { get; set; }
+
+        public List<Adresa> Adrese { get; set; }
     }
 }
