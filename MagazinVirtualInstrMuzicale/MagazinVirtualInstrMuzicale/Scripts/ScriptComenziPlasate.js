@@ -7,7 +7,6 @@
             success: function (result) {
                 //load returned data inside contentFrame DIV
                 $('#reloadContentComenziPlasateId').html(result);
-
             }
         });
     });
@@ -20,7 +19,6 @@
             success: function (result) {
                 //load returned data inside contentFrame DIV
                 $('#reloadContentComenziPlasateId').html(result);
-
             }
         });
     });

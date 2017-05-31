@@ -11,7 +11,7 @@
             decimal total = 0;
             foreach (var produs in produsePtComanda)
             {
-                <div style="position:relative; left:50px;">@("Produs: " + produs.NumeProdus + " | Pret:" + (produs.PretProdus * produs.Cantitate).ToString("#.##") + " | Cantitate:" + produs.Cantitate)</div>
+                <div style="position:relative; left:50px;">@("Produs: " + produs.NumeProdus + " | Pret:" + (produs.PretProdus * produs.Cantitate).ToString("#.##") + " | Cantitate:" + produs.Cantitate + " buc")</div>
                 total += (produs.PretProdus * produs.Cantitate);
             }
             <br>

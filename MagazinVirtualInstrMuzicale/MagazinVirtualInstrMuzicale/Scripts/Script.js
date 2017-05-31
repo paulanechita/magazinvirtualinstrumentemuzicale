@@ -48,4 +48,18 @@
         });
         $("#numeProducatorId").val("");
     });
+
+    $("#cautaButtonId").on("click", function () {
+        var searchTerm = $("#searchTrimId").val();
+        $.ajax({
+            type: 'GET',
+            url: '/AdminProduse/Search?searchTerm=' + searchTerm,
+            success: function (result) {
+                //load returned data inside contentFrame DIV
+                $('#reloadContentComenziPlasateId').html(result);
+            }
+        });
+        $("#searchTrimId").val("");
+    });
+
 });

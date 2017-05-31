@@ -266,5 +266,16 @@ namespace MagazinVirtualInstrMuzicale.Controllers
 
             return PartialView("_comenziPlasatePartialView", produseComandate);
         }
+
+        [HttpGet]
+        public ActionResult Search(string searchTerm)
+        {
+            var produseComandate = _produsManager.GetProduseComandate();
+
+            produseComandate.ListaComenzi = produseComandate.ListaComenzi.Where(x => x.StatusComanda.DescriereStatusComanda.ToLower().Contains(searchTerm.ToLower()) ||
+                                                                                     x.Client.Nume.ToLower().Contains(searchTerm.ToLower())).ToList();
+
+            return PartialView("_comenziPlasatePartialView", produseComandate);
+        }
     }
 }
