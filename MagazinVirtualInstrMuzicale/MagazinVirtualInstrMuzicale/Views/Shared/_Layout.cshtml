@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink((Session["UserLogat"] != null ? "Welcome " + Session["UserLogat"].ToString() : " "), "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav meniuLogin">
@@ -28,9 +28,9 @@
                             <li><a href="/ContNou/InregistrareUser">Cont Nou</a></li>
                         }
                         else if (Session["UserRole"].ToString() == "Client")
-                        {
-                            <li><a href="/Client/SignOut">Sign Out</a></li>
+                        {   
                             <li id="cosId" style="@ViewBag.CandAvemProduseColoratRosu"><a href="/Client/Cos">Cos</a></li>
+                            <li><a href="/Client/SignOut">Sign Out</a></li>
                         }
                         else if (Session["UserRole"].ToString() == "Administrator")
                         {

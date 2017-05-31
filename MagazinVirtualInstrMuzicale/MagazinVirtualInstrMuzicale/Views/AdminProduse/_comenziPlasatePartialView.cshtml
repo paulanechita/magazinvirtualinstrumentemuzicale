@@ -5,7 +5,7 @@
 {
     <div id="comenziPlasateId" style="border:2px solid black">
         @{
-            <strong> Nume Client: @comenzi.Client.Nume &nbsp; Numar Comanda: @comenzi.IdComanda</strong>
+            <strong> Nume Client: @(comenzi.Client.Nume + " " + comenzi.Client.Prenume) &nbsp; Numar Comanda: @comenzi.IdComanda</strong>
                 <br />
             var produsePtComanda = Model.ListaProduseComandate.Where(x => x.IdComanda == comenzi.IdComanda).ToList();
             decimal total = 0;
