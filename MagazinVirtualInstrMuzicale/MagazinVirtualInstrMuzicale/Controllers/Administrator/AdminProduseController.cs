@@ -1,6 +1,7 @@
 ﻿using MagazinVirtualInstrMuzicale.Common;
 using MagazinVirtualInstrMuzicale.Models;
 using MVIM.DAL;
+using MVIM.DAL.DataModels;
 using MVIM.Domain.Interfaces;
 using MVIM.Domain.Managers;
 using System;
@@ -18,6 +19,7 @@ namespace MagazinVirtualInstrMuzicale.Controllers
         public SesiuneCurenta User = new SesiuneCurenta();
         private IUserManager _userManager = new UserManager();
         private IProdusManager _produsManager = new ProdusManager();
+        private IComandaManager _comandaManager = new ComandaManager();
         private static int idProdus;
 
         //public AdminProduseController(IProdusManager produsManager, IUserManager userManager)
@@ -241,6 +243,28 @@ namespace MagazinVirtualInstrMuzicale.Controllers
             var produseComandate = _produsManager.GetProduseComandate();
 
             return View(produseComandate);
+        }
+
+        [HttpGet]
+        public ActionResult ExpediazaComanda(int idComanda)
+        {
+            ModelState.Clear();
+            _comandaManager.ExpediazaComanda(idComanda, "Comanda Expediata");
+
+            var produseComandate = _produsManager.GetProduseComandate();
+                        
+            return PartialView("_comenziPlasatePartialView", produseComandate);
+        }
+
+        [HttpGet]
+        public ActionResult StergeComanda(int idComanda)
+        {
+            ModelState.Clear();
+            _comandaManager.StergeComanda(idComanda);
+
+            var produseComandate = _produsManager.GetProduseComandate();
+
+            return PartialView("_comenziPlasatePartialView", produseComandate);
         }
     }
 }

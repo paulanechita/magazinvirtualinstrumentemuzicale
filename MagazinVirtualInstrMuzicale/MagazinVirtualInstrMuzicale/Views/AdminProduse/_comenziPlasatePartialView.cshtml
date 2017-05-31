@@ -1,0 +1,33 @@
+﻿@model MVIM.DAL.DataModels.ComenziPlasateDataModel
+
+<br />
+@foreach (var comenzi in Model.ListaComenzi)
+{
+    <div id="comenziPlasateId" style="border:2px solid black">
+        @{
+            <strong> Nume Client: @comenzi.Client.Nume &nbsp; Numar Comanda: @comenzi.IdComanda</strong>
+                <br />
+            var produsePtComanda = Model.ListaProduseComandate.Where(x => x.IdComanda == comenzi.IdComanda).ToList();
+            decimal total = 0;
+            foreach (var produs in produsePtComanda)
+            {
+                <div style="position:relative; left:50px;">@("Produs: " + produs.NumeProdus + " | Pret:" + (produs.PretProdus * produs.Cantitate).ToString("#.##") + " | Cantitate:" + produs.Cantitate)</div>
+                total += (produs.PretProdus * produs.Cantitate);
+            }
+            <br>
+            <strong>TOTAL: @total.ToString("#.##") RON</strong>
+                <br>
+                <br>
+                @: Status Comanda: <strong>@comenzi.StatusComanda.DescriereStatusComanda</strong>
+                <br>
+                <br>
+                <button id="@comenzi.IdComanda" class="comandaExpediataId">Comanda Expediata</button>
+                <button id="@comenzi.IdComanda" class="stergeComandaId">Sterge Comanda</button>
+
+                <br>
+        }
+    </div>
+        <br />
+            }
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/ScriptComenziPlasate.js"></script>

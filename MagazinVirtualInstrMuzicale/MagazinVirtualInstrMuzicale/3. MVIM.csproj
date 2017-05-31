@@ -148,6 +148,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Script.js" />
     <Content Include="Scripts\ScriptCategorii.js" />
+    <Content Include="Scripts\ScriptComenziPlasate.js" />
     <Content Include="Scripts\ScriptProducatori.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -209,6 +210,7 @@
     <Content Include="Views\Client\Cos.cshtml" />
     <Content Include="Views\Client\FinalizeazaComanda.cshtml" />
     <Content Include="Views\AdminProduse\ComenziPlasate.cshtml" />
+    <Content Include="Views\AdminProduse\_comenziPlasatePartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
