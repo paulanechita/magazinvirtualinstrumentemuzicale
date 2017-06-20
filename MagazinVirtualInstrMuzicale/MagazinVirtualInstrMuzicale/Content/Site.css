@@ -20,3 +20,7 @@ textarea {
     position: relative;
     left: 60%;
 }
+
+#map {
+    height:500px;
+}

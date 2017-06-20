@@ -1,0 +1,61 @@
+﻿@model MagazinVirtualInstrMuzicale.Models.DetaliiModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalii</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Numele produsului:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeProdus)
+        </dd>
+
+        <dt>
+            Pret:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PretProdus)
+        </dd>
+
+        <dt>
+            Descriere:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescriereProdus)
+        </dd>
+
+        <dt>
+            Producator:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producator)
+        </dd>
+        <dt>
+            Poza:
+        </dt>
+
+        <dd>
+            <div> <img src='/Home/LoadPicture?id=@(Model.IdPozaProdus)' width="250" height="100" /></div>
+        </dd>
+
+    </dl>
+</div>
+<p>    
+    <button onclick="location.href='/Home/Index'">Home</button>
+     
+    @if (Session["UserRole"] != null && Session["UserRole"].ToString() == "Client")
+    {
+        <button class="adaugaInCosClass" id="@Model.IdProdus">Adauga In Cos</button>
+    }
+</p>

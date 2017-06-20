@@ -63,6 +63,29 @@ namespace MagazinVirtualInstrMuzicale.Controllers
             return Content("");
         }
 
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var detaliiProdusModel = new DetaliiModel();
+
+            var produs = _produsManager.GetProdus(id);
+
+            detaliiProdusModel.NumeProdus = produs.NumeProdus;
+            detaliiProdusModel.PretProdus = produs.PretProdus;
+            detaliiProdusModel.Producator = produs.Producator.Nume;
+            detaliiProdusModel.DescriereProdus = produs.DescriereProdus;
+            detaliiProdusModel.IdPozaProdus = produs.PozaProdus.FirstOrDefault().IdPozaProdus;
+            detaliiProdusModel.IdProdus = id;
+
+            return View(detaliiProdusModel);
+        }
+        
+        [HttpGet]
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
         private bool SuntProduseInCos()
         {
             var userLogat = Session["UserLogat"].ToString();

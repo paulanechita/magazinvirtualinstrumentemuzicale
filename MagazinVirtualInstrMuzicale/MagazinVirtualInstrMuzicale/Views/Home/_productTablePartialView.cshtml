@@ -5,7 +5,7 @@
     {
         <tr>
             <td>
-                Numele Produsului: @item.NumeProdus
+                Numele Produsului:@Html.ActionLink(item.NumeProdus, "Details", "Home", new { id = item.IdProdus }, null ) 
                 <br />
                 Pretul Produsului:   @(item.PretProdus.ToString("#.##") + " RON")
                 <br />
