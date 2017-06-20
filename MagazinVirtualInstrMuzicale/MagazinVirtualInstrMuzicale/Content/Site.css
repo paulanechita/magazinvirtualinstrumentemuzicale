@@ -22,5 +22,17 @@ textarea {
 }
 
 #map {
-    height:500px;
+    height: 500px;
+}
+
+.carousel-inner {
+    height: 500px;
+}
+
+.poza {
+   position:relative;
+   left:300px;
+   top:50px;
+   width:550px;
+   height:150px;
 }
