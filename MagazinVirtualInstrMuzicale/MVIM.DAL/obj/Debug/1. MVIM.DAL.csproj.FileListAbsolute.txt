@@ -26,4 +26,8 @@ D:\!LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\
 D:\!LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\bin\Debug\EntityFramework.SqlServer.xml
 D:\!LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\obj\Debug\MVIM.DAL.dll
 D:\!LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\obj\Debug\MVIM.DAL.pdb
+<<<<<<< HEAD
+C:\Users\pauli\Desktop\Virtual Musical Instruments Store\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\obj\Debug\1. MVIM.DAL.csprojResolveAssemblyReference.cache
+=======
 D:\!LICENTA PAULA\magazinvirtualinstrumentemuzicale\MagazinVirtualInstrMuzicale\MVIM.DAL\obj\Debug\1. MVIM.DAL.csprojResolveAssemblyReference.cache
+>>>>>>> 0bb5c26c24076a1d7f38a7d6d025d49dd2936a6b

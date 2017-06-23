@@ -32,9 +32,14 @@
                             <li><a href="/Home/Index">Acasa</a></li>
                             <!--<li><a href="/Client/ContulMeu">Contul Meu</a></li>-->
                             <li><a href="/Home/Contact">Contact</a></li>
+<<<<<<< HEAD
                             <li id="cosId" style="width:50%;@ViewBag.CandAvemProduseColoratRosu">
                                 <a href="/Client/Cos"><img src="~/Content/Images/empty-cart-light.png" style="width:5%; height:5%;" />Cos</a>
                             </li>
+=======
+                            <li><a href="/Client/SignOut">Sign Out</a></li>
+
+>>>>>>> origin/master
                         }
                         else if (Session["UserRole"].ToString() == "Administrator")
                         {
