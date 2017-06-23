@@ -5,49 +5,31 @@
     var nrRowuri = Model.ListaProduse.Count() / 2;
 }
 
-@for (int i = 1; i < nrRowuri; i++)
+@for (int i = 0; i < Model.ListaProduse.Count(); i += 3)
 {
     <div class="row">
         @{
-
-
-            var contor = 0;
-            foreach (var item in Model.ListaProduse)
+            int j = 0;
+            for (; j <= 2 && i + j < Model.ListaProduse.Count(); j++)
             {
-
-                if (contor < 2)
-                {
-                    <div class="col-sm-5">
-                        @{
-
-                            @:Numele Produsului:@Html.ActionLink(item.NumeProdus, "Details", "Home", new { id = item.IdProdus }, null)
-                            <br />
-                            @:Pretul Produsului:   @(item.PretProdus.ToString("#.##") + " RON")
-                            <br />
-                            foreach (var poza in item.PozaProdus)
-                            {
-                                <div> <img src='/Home/LoadPicture?id=@poza.IdPozaProdus' width="250" height="100" /></div>
-                            }
-                            <br />
-                            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "Client")
-                            {
-                                <button class="adaugaInCosClass" id="@item.IdProdus">Adauga In Cos</button>
-                            }
-                        }
-                       @{
-                           contor++;
-                           
-                    }
-                       
-                        
-
-                    </div>
-
-                               }
-                               { break; }
-                           }
+                <div class="col-md-4">
+@{
+                    @:Numele Produsului:@Html.ActionLink(Model.ListaProduse[i + j].NumeProdus, "Details", "Home", new { id = Model.ListaProduse[i + j].IdProdus }, null)
+                    <br />
+                    @:Pretul Produsului:   @(Model.ListaProduse[i + j].PretProdus.ToString("#.##") + " RON")
+                    <br />
+    foreach (var poza in Model.ListaProduse[i + j].PozaProdus)
+    {
+                    <div> <img src='/Home/LoadPicture?id=@poza.IdPozaProdus' width="250" height="100" /></div>
+    }
+                    <br />
+    if (Session["UserRole"] != null && Session["UserRole"].ToString() == "Client")
+    {
+                    <button class="adaugaInCosClass" id="@Model.ListaProduse[i + j].IdProdus">Adauga In Cos</button>
+    }
+    }
+                </div>
+    }
         }
     </div>
-}
-
-
+    }
