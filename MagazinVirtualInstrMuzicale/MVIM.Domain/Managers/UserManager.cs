@@ -47,5 +47,10 @@ namespace MVIM.Domain.Managers
         {
             return _repository.DeleteUser(username);
         }
+
+        public bool UpdateUser(User userModified, Client clientModified)
+        {
+            return _repository.UpdateUser(userModified, clientModified);
+        }
     }
 }

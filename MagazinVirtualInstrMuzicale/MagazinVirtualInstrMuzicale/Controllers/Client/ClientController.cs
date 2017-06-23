@@ -53,6 +53,43 @@ namespace MagazinVirtualInstrMuzicale.Controllers.Client
             return RedirectToAction("Cos");
         }
 
+        public ActionResult ContulMeu()
+        {
+            var userLogat = Session["UserLogat"].ToString();
+            var user = _userManager.GetUsers().Where(u => u.UserName == userLogat).FirstOrDefault();
+            var client = _userManager.GetClientForUsername(user.IdUser);
+
+            var model = new ContulMeuModel();
+            model.Client = client;
+            model.User = user;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ContulMeu(ContulMeuModel contulMeu)
+        {
+            var userLogat = Session["UserLogat"].ToString();
+            var user = _userManager.GetUsers().Where(u => u.UserName == userLogat).FirstOrDefault();
+            var client = _userManager.GetClientForUsername(user.IdUser);
+            if (contulMeu.Client != client)
+            {
+                client.Nume = contulMeu.Client.Nume;
+                client.Prenume = contulMeu.Client.Prenume;
+                client.NumarTelefon = contulMeu.Client.NumarTelefon;
+            }
+            var isUpdated = _userManager.UpdateUser(contulMeu.User, client);
+
+            var model = new ContulMeuModel();
+
+            var newUser = _userManager.GetUsers().Where(u => u.UserName == userLogat).FirstOrDefault();
+            var newClient = _userManager.GetClientForUsername(user.IdUser);
+            model.Client = newClient;
+            model.User = newUser;
+
+            return View(model);
+        }
+
         [HttpGet]
         public ActionResult FinalizeazaComanda()
         {

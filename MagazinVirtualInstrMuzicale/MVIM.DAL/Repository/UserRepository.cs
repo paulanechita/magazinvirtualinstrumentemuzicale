@@ -42,7 +42,7 @@ namespace MVIM.DAL.Repository
 
         public List<User> GetUsers()
         {
-            return _context.User.ToList(); 
+            return _context.User.ToList();
         }
 
         public bool LoginUser(string username, string parola)
@@ -66,7 +66,27 @@ namespace MVIM.DAL.Repository
 
             return role;
         }
+        public bool UpdateUser(User userModified, Client clientModified)
+        {
+            var user = new DAL.User();
+            if (userModified != null)
+                user = _context.User.Find(userModified.IdUser);
 
+            var client = _context.Client.Find(clientModified.IdClient);
+
+            if (user != userModified)
+            {
+            }
+
+            if (client != clientModified)
+            {
+                client.Nume = clientModified.Nume;
+                client.Prenume = clientModified.Prenume;
+                client.NumarTelefon = clientModified.NumarTelefon;
+            }
+            _context.SaveChanges();
+            return true;
+        }
         public bool SaveUser(string nume, string prenume, DateTime dataNasterii, string email, string numarTelefon, string username, string parola)
         {
             var isSaved = false;

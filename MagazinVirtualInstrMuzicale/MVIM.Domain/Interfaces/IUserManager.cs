@@ -20,5 +20,7 @@ namespace MVIM.Domain.Interfaces
         List<User> GetUsers();
 
         bool DeleteUser(string username);
+
+        bool UpdateUser(User userModified, Client clientModified);
     }
 }

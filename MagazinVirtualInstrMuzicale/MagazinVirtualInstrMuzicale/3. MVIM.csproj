@@ -181,6 +181,7 @@
     <Compile Include="Models\AfisareProduse.cs" />
     <Compile Include="Models\ComenziPlasateModel.cs" />
     <Compile Include="Models\ContNouModel.cs" />
+    <Compile Include="Models\ContulMeuModel.cs" />
     <Compile Include="Models\DetaliiModel.cs" />
     <Compile Include="Models\FinalizareComandaModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -219,6 +220,7 @@
     <Content Include="Views\AdminProduse\_comenziPlasatePartialView.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Client\ContulMeu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

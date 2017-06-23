@@ -19,5 +19,7 @@ namespace MVIM.DAL.Interfete
         List<User> GetUsers();
 
         bool DeleteUser(string username);
+
+        bool UpdateUser(User userModified, Client clientModified);
     }
 }
