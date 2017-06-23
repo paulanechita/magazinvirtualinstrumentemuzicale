@@ -1,4 +1,10 @@
-﻿$(document).ready(function () {
+﻿$.noConflict();
+$(document).ready(function ($) {
+    $('#dataNasterii').on("click", function ()
+    {
+        $(this).datepicker();
+    });
+
     $(".categoryFilterClass").on("click", function (e) {
         var valueOfSelection = $(this).attr("id");
         $.ajax({
@@ -13,7 +19,6 @@
     });
 
     $(".pretFilterClass").on("click", function (e) {
-        debugger;
         var valueOfSelection = $(this).text();
         $.ajax({
             type: 'GET',
@@ -28,7 +33,6 @@
 
 
     $(".adaugaInCosClass").on("click", function () {
-        debugger;
         var idOfProdus = $(this).attr("id");
         $.ajax({
             type: 'POST',

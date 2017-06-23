@@ -17,7 +17,7 @@ namespace MagazinVirtualInstrMuzicale.Models
         public string Prenume { get; set; }
 
         [Display(Name = "Data nasterii: ")]
-        [Required]
+        [Required]        
         public DateTime DataNasterii { get; set; }
 
         [Display(Name = "Email: ")]
