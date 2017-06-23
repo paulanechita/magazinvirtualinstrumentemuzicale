@@ -7,7 +7,7 @@ namespace MagazinVirtualInstrMuzicale.Common
 {
     public static class Constants
     {
-        public const string BackgroundCos = "background-color:red";
+        public const string BackgroundCos = "background-color:darkseagreen";
 
         public const string EmailUsedForSMTP = "adsad.away@gmail.com";
 
