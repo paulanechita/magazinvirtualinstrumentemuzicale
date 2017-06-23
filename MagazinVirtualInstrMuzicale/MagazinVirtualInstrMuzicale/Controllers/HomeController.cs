@@ -42,6 +42,18 @@ namespace MagazinVirtualInstrMuzicale.Controllers
 
             return PartialView("_productTablePartialView", _afisareProduse);
         }
+        public ActionResult FiltreazaDupaPret(string pretFilterParameter)
+        {
+            _afisareProduse.ListaProduse = _produsManager.GetProduse();
+            _afisareProduse.CategoriiProduse = _produsManager.GetCategorii();
+
+            if (pretFilterParameter == "Crescator")
+                _afisareProduse.ListaProduse = _afisareProduse.ListaProduse.OrderBy(x => x.PretProdus).ToList();
+            else if(pretFilterParameter == "Descrescator")
+                _afisareProduse.ListaProduse = _afisareProduse.ListaProduse.OrderByDescending(x => x.PretProdus).ToList();
+
+            return PartialView("_productTablePartialView", _afisareProduse);
+        }
 
         public ActionResult LoadPicture(int id)
         {

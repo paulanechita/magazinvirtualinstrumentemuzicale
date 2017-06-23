@@ -12,6 +12,21 @@
         e.preventDefault();
     });
 
+    $(".pretFilterClass").on("click", function (e) {
+        debugger;
+        var valueOfSelection = $(this).text();
+        $.ajax({
+            type: 'GET',
+            url: '/Home/FiltreazaDupaPret?pretFilterParameter=' + valueOfSelection,
+            success: function (result) {
+                //load returned data inside contentFrame DIV
+                $('#renderTablePartialView').html(result);
+            }
+        });
+        e.preventDefault();
+    });
+
+
     $(".adaugaInCosClass").on("click", function () {
         debugger;
         var idOfProdus = $(this).attr("id");
