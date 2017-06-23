@@ -1,10 +1,4 @@
-﻿$.noConflict();
-$(document).ready(function ($) {
-    $('#dataNasterii').on("click", function ()
-    {
-        $(this).datepicker();
-    });
-
+﻿$(document).ready(function () {
     $(".categoryFilterClass").on("click", function (e) {
         var valueOfSelection = $(this).attr("id");
         $.ajax({

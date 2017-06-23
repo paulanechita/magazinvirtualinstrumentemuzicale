@@ -141,6 +141,7 @@
     <Content Include="Content\CarouselImages\poza2.jpg" />
     <Content Include="Content\CarouselImages\poza3.jpg" />
     <Content Include="Content\CarouselImages\poza4.jpg" />
+    <Content Include="Content\Images\empty-cart-light.png" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

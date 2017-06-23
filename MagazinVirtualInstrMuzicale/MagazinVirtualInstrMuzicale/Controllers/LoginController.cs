@@ -36,6 +36,11 @@ namespace MagazinVirtualInstrMuzicale.Controllers
                 if (isLoggedIn)
                 {
                     Session["UserLogat"] = userToLogIn.Username;
+
+                    var user = _userManager.GetUsers().FirstOrDefault(u => u.UserName == Session["UserLogat"].ToString());
+                    var client = _userManager.GetClientForUsername(user.IdUser);
+                    Session["NumePrenume"] = client.Prenume + " " + client.Nume;
+
                     var userRole = _userManager.ReturnRoleForUser(userToLogIn.Username);
                     Session["UserRole"] = userRole;
                     return RedirectToAction("Index", "Home");
