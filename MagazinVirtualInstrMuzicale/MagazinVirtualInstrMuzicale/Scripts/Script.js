@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
-    $("#categoryFilterId").on("change", function () {
-        var valueOfSelection = $(this).val();
+    $(".categoryFilterClass").on("click", function (e) {
+        var valueOfSelection = $(this).attr("id");
         $.ajax({
             type: 'GET',
             url: '/Home/Filtreaza?categoriiFilterParameter=' + valueOfSelection,
@@ -9,6 +9,7 @@
                 $('#renderTablePartialView').html(result);
             }
         });
+        e.preventDefault();
     });
 
     $(".adaugaInCosClass").on("click", function () {

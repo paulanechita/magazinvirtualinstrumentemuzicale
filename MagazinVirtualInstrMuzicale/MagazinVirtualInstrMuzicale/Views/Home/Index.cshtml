@@ -44,19 +44,20 @@
 
     <h2 style="text-align:center">Produse</h2>
     <br />
-    Filtrare dupa Categorie:
-    <br />
-    @* @Html.DropDownListFor(m => m.IdCategorieSelectata, new SelectList(Model.CategoriiProduse,
-        "IdCategorie", "NumeCategorie"), "  --Selecteaza Categoria--  ", new { id = "categoryFilterId" })*@
-    <ul class="list-group">
-        @foreach (var item in Model.CategoriiProduse)
-        {
-            <li class="list-group-item @item.IdCategorie">@item.NumeCategorie</li>
-        }
-       
-
-    </ul>
-    <br />
-
-    <div id="renderTablePartialView">@{ Html.RenderPartial("_productTablePartialView", Model); }</div>
+    <div class="row">
+        <div class="col-sm-2">
+            Categorii:
+            <br />
+            @* @Html.DropDownListFor(m => m.IdCategorieSelectata, new SelectList(Model.CategoriiProduse,
+                "IdCategorie", "NumeCategorie"), "  --Selecteaza Categoria--  ", new { id = "categoryFilterId" })*@
+            <ul class="list-group">
+                @foreach (var item in Model.CategoriiProduse) { 
+                    <a href="#" id="@item.IdCategorie" class="list-group-item categoryFilterClass">@item.NumeCategorie</a>
+                }
+            </ul>
+            <br />
+        </div>
+        <div class="col-sm-10" id="renderTablePartialView">@{ Html.RenderPartial("_productTablePartialView", Model); }</div>
+    </div>
 </div>
+

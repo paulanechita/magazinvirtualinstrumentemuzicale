@@ -1,25 +1,53 @@
 ﻿@model MagazinVirtualInstrMuzicale.Models.AfisareProduse
 
-<table class="table">
-    @foreach (var item in Model.ListaProduse)
-    {
-        <tr>
-            <td>
-                Numele Produsului:@Html.ActionLink(item.NumeProdus, "Details", "Home", new { id = item.IdProdus }, null ) 
-                <br />
-                Pretul Produsului:   @(item.PretProdus.ToString("#.##") + " RON")
-                <br />
-                @foreach (var poza in item.PozaProdus)
+
+@{
+    var nrRowuri = Model.ListaProduse.Count() / 2;
+}
+
+@for (int i = 1; i < nrRowuri; i++)
+{
+    <div class="row">
+        @{
+
+
+            var contor = 0;
+            foreach (var item in Model.ListaProduse)
+            {
+
+                if (contor < 2)
                 {
-                    <div> <img src='/Home/LoadPicture?id=@poza.IdPozaProdus' width="250" height="100" /></div>
-                }
-                <br />
-                @if (Session["UserRole"] != null && Session["UserRole"].ToString() == "Client")
-                {
-                    <button class="adaugaInCosClass" id="@item.IdProdus">Adauga In Cos</button>
-                }
-                
-            </td>
-        </tr>
-    }
-</table>
+                    <div class="col-sm-5">
+                        @{
+
+                            @:Numele Produsului:@Html.ActionLink(item.NumeProdus, "Details", "Home", new { id = item.IdProdus }, null)
+                            <br />
+                            @:Pretul Produsului:   @(item.PretProdus.ToString("#.##") + " RON")
+                            <br />
+                            foreach (var poza in item.PozaProdus)
+                            {
+                                <div> <img src='/Home/LoadPicture?id=@poza.IdPozaProdus' width="250" height="100" /></div>
+                            }
+                            <br />
+                            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "Client")
+                            {
+                                <button class="adaugaInCosClass" id="@item.IdProdus">Adauga In Cos</button>
+                            }
+                        }
+                       @{
+                           contor++;
+                           
+                    }
+                       
+                        
+
+                    </div>
+
+                               }
+                               { break; }
+                           }
+        }
+    </div>
+}
+
+
