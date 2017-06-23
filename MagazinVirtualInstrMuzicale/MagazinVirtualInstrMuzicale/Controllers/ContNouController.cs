@@ -27,16 +27,20 @@ namespace MagazinVirtualInstrMuzicale.Controllers
         [HttpPost]
         public ActionResult InregistrareUser(ContNouModel userNou)
         {
-            if (userNou.Parola == userNou.ConfirmaParola)
+            if (ModelState.IsValid)
             {
-                var isSaved = _userManager.SaveUser(userNou.Nume, userNou.Prenume, userNou.DataNasterii, userNou.Email, userNou.NumarTelefon, userNou.Username, userNou.Parola);
-                if (isSaved)
-                    return RedirectToAction("Login", "Login");
+                if (userNou.Parola == userNou.ConfirmaParola)
+                {
+                    var isSaved = _userManager.SaveUser(userNou.Nume, userNou.Prenume, userNou.DataNasterii, userNou.Email, userNou.NumarTelefon, userNou.Username, userNou.Parola);
+                    if (isSaved)
+                        return RedirectToAction("Login", "Login");
+                    else
+                        return View();
+                }
                 else
                     return View();
             }
-            else
-                return View();
+            return View();
         }
     }
 }

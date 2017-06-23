@@ -29,16 +29,20 @@ namespace MagazinVirtualInstrMuzicale.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel userToLogIn)
         {
-            var isLoggedIn = _userManager.LoginUser(userToLogIn.Username, userToLogIn.Parola);
-
-            if (isLoggedIn)
+            if (ModelState.IsValid)
             {
-                Session["UserLogat"] = userToLogIn.Username;
-                var userRole = _userManager.ReturnRoleForUser(userToLogIn.Username);
-                Session["UserRole"] = userRole;
-                return RedirectToAction("Index", "Home");
-            }
+                var isLoggedIn = _userManager.LoginUser(userToLogIn.Username, userToLogIn.Parola);
+
+                if (isLoggedIn)
+                {
+                    Session["UserLogat"] = userToLogIn.Username;
+                    var userRole = _userManager.ReturnRoleForUser(userToLogIn.Username);
+                    Session["UserRole"] = userRole;
+                    return RedirectToAction("Index", "Home");
+                }
                 return View();
+            }
+            return View();
         }
     }
 }
