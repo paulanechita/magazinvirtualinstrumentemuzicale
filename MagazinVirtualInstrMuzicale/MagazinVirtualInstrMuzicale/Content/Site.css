@@ -29,6 +29,8 @@ textarea {
     height: 300px;
 }
 
+.poza{width:100%;}
+
 button {
     background-color: darkseagreen; /*#4CAF50 Green */
     border: none;
