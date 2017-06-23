@@ -6,19 +6,23 @@
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
         <div class="item active">
-            <img class="poza" src='/Home/LoadPicture?id=@Model.ListaProduse.FirstOrDefault().PozaProdus.FirstOrDefault().IdPozaProdus'>
+            <img class="poza" src="~/Content/CarouselImages/poza4.jpg" />
         </div>
-        @foreach (var item in Model.ListaProduse.Skip(1))
-        {
-            <div class="item">
-                <img class="poza" src='/Home/LoadPicture?id=@item.PozaProdus.FirstOrDefault().IdPozaProdus'>
-            </div>
-        }
+        <div class="item">
+            <img class="poza" src="~/Content/CarouselImages/poza2.jpg" />
+        </div>
+        <div class="item">
+            <img class="poza" src="~/Content/CarouselImages/poza3.jpg" />
+        </div>
+        <div class="item">
+            <img class="poza" src="~/Content/CarouselImages/poza1.jpg" />
+        </div>
     </div>
 
     <!-- Left and right controls -->
@@ -42,8 +46,17 @@
     <br />
     Filtrare dupa Categorie:
     <br />
-    @Html.DropDownListFor(m => m.IdCategorieSelectata, new SelectList(Model.CategoriiProduse, "IdCategorie", "NumeCategorie"), "  --Selecteaza Categoria--  ", new { id = "categoryFilterId" })
+    @* @Html.DropDownListFor(m => m.IdCategorieSelectata, new SelectList(Model.CategoriiProduse,
+        "IdCategorie", "NumeCategorie"), "  --Selecteaza Categoria--  ", new { id = "categoryFilterId" })*@
+    <ul class="list-group">
+        @foreach (var item in Model.CategoriiProduse)
+        {
+            <li class="list-group-item @item.IdCategorie">@item.NumeCategorie</li>
+        }
+       
+
+    </ul>
     <br />
-    
+
     <div id="renderTablePartialView">@{ Html.RenderPartial("_productTablePartialView", Model); }</div>
 </div>

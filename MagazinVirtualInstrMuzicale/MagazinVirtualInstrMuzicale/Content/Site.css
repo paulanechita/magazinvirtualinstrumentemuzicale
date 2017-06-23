@@ -29,10 +29,9 @@ textarea {
     height: 500px;
 }
 
-.poza {
-   position:relative;
-   left:300px;
-   top:50px;
-   width:550px;
-   height:150px;
+.poza {   
+   /*left:300px;*/
+   /*top:140px;*/
+   width:100%;
+   height:100%;
 }
