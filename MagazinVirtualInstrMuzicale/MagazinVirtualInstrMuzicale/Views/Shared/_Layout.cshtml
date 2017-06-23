@@ -32,8 +32,9 @@
                             <li><a href="/Home/Index">Acasa</a></li>
                             <li id="cosId" style="@ViewBag.CandAvemProduseColoratRosu"><a href="/Client/Cos">Cos</a></li>
                             <!--<li><a href="/Client/ContulMeu">Contul Meu</a></li>-->
-                            <li><a href="/Client/SignOut">Sign Out</a></li>
                             <li><a href="/Home/Contact">Contact</a></li>
+                            <li><a href="/Client/SignOut">Sign Out</a></li>
+
                         }
                         else if (Session["UserRole"].ToString() == "Administrator")
                         {
@@ -43,8 +44,9 @@
                             <li><a href="/Client/SignOut">Sign Out</a></li>
                         }
                     }
-                    
+
                 </ul>
+
             </div>
         </div>
     </div>
