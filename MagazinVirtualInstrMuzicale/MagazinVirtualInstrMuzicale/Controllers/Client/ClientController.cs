@@ -69,27 +69,32 @@ namespace MagazinVirtualInstrMuzicale.Controllers.Client
         [HttpPost]
         public ActionResult ContulMeu(ContulMeuModel contulMeu)
         {
-            var userLogat = Session["UserLogat"].ToString();
-            var user = _userManager.GetUsers().Where(u => u.UserName == userLogat).FirstOrDefault();
-            var client = _userManager.GetClientForUsername(user.IdUser);
-            if (contulMeu.Client != client)
-            {
-                client.Nume = contulMeu.Client.Nume;
-                client.Prenume = contulMeu.Client.Prenume;
-                client.NumarTelefon = contulMeu.Client.NumarTelefon;                
-            }
-            if (user != null)
-                user.Parola = contulMeu.Parola;
-
-            var isUpdated = _userManager.UpdateUser(contulMeu.User, client);
-
             var model = new ContulMeuModel();
 
-            var newUser = _userManager.GetUsers().Where(u => u.UserName == userLogat).FirstOrDefault();
-            var newClient = _userManager.GetClientForUsername(user.IdUser);
-            model.Client = newClient;
-            model.User = newUser;
+            if (ModelState.IsValid)
+            {
+                var userLogat = Session["UserLogat"].ToString();
+                var user = _userManager.GetUsers().Where(u => u.UserName == userLogat).FirstOrDefault();
+                var client = _userManager.GetClientForUsername(user.IdUser);
+                                
+                if (contulMeu.Client != client)
+                {
+                    client.Nume = contulMeu.Client.Nume;
+                    client.Prenume = contulMeu.Client.Prenume;
+                    client.NumarTelefon = contulMeu.Client.NumarTelefon;
+                }
+                if (user != null)
+                    user.Parola = contulMeu.Parola;
 
+                var isUpdated = _userManager.UpdateUser(user, client);
+
+                var newUser = _userManager.GetUsers().Where(u => u.UserName == userLogat).FirstOrDefault();
+                var newClient = _userManager.GetClientForUsername(user.IdUser);
+                model.Client = newClient;
+                model.User = newUser;
+
+                return View(model);
+            }
             return View(model);
         }
 
@@ -112,7 +117,7 @@ namespace MagazinVirtualInstrMuzicale.Controllers.Client
             {
                 model.Adrese.Add(item.Adresa);
             }
-             
+
             return View(model);
         }
 
