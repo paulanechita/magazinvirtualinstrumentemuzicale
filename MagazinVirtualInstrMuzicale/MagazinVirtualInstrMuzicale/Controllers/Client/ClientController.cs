@@ -76,8 +76,11 @@ namespace MagazinVirtualInstrMuzicale.Controllers.Client
             {
                 client.Nume = contulMeu.Client.Nume;
                 client.Prenume = contulMeu.Client.Prenume;
-                client.NumarTelefon = contulMeu.Client.NumarTelefon;
+                client.NumarTelefon = contulMeu.Client.NumarTelefon;                
             }
+            if (user != null)
+                user.Parola = contulMeu.Parola;
+
             var isUpdated = _userManager.UpdateUser(contulMeu.User, client);
 
             var model = new ContulMeuModel();

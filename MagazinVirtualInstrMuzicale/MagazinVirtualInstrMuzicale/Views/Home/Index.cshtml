@@ -51,6 +51,7 @@
             @* @Html.DropDownListFor(m => m.IdCategorieSelectata, new SelectList(Model.CategoriiProduse,
                 "IdCategorie", "NumeCategorie"), "  --Selecteaza Categoria--  ", new { id = "categoryFilterId" })*@
             <ul class="list-group">
+                <a href="#" id="" class="list-group-item categoryFilterClass">Toate</a>
                 @foreach (var item in Model.CategoriiProduse) { 
                     <a href="#" id="@item.IdCategorie" class="list-group-item categoryFilterClass">@item.NumeCategorie</a>
                 }
