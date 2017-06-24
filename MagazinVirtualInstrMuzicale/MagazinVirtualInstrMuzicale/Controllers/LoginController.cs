@@ -39,7 +39,7 @@ namespace MagazinVirtualInstrMuzicale.Controllers
 
                     var user = _userManager.GetUsers().FirstOrDefault(u => u.UserName == Session["UserLogat"].ToString());
                     var client = _userManager.GetClientForUsername(user.IdUser);
-                    Session["NumePrenume"] = client.Prenume + " " + client.Nume;
+                    Session["NumePrenume"] = client.Prenume;
 
                     var userRole = _userManager.ReturnRoleForUser(userToLogIn.Username);
                     Session["UserRole"] = userRole;

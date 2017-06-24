@@ -1,10 +1,5 @@
 ﻿@model MagazinVirtualInstrMuzicale.Models.AfisareProduse
 
-
-@{
-    var nrRowuri = Model.ListaProduse.Count() / 2;
-}
-
 @for (int i = 0; i < Model.ListaProduse.Count(); i += 3)
 {
     <div class="row">

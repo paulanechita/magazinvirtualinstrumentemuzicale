@@ -9,11 +9,11 @@ namespace MagazinVirtualInstrMuzicale.Common
     {
         public const string BackgroundCos = "background-color:darkseagreen";
 
-        public const string EmailUsedForSMTP = "adsad.away@gmail.com";
+        public const string EmailUsedForSMTP = "magazin.instrumentemuzicale@gmail.com";
 
-        public const string Password = "lin0220155507";
+        public const string Password = "instrumentemuzicale";
 
-        public const string GoogleMapsApiKey = "AIzaSyDDovOwiaatgQ0ChzO0c9rcHaC3KjUrlyU";
+        public const string GoogleMapsApiKey = "AIzaSyBZGMYJbMvNdickD_v4VJU5nwA0PkfgbH0";
 
         public const string EmailFrom = "comanda@mvim.ro";
 
