@@ -42,7 +42,7 @@
 <br />
 <br />
 <form action="/Client/FinalizeazaComanda" method="post">
-    <input name="adresa" type="radio" />Adresa Noua
+    @*<input name="adresa" type="radio" />Adresa Noua*@
     Strada:
     <br />
     <input name="Strada" />
@@ -75,5 +75,5 @@
         <input type="radio" name="adresa" value="@item.IdAdresa">@(item.Strada + ", " + item.Numar + ", " + item.Oras)
         <br />
     }
-    <a href="~/Client/FinalizeazaComanda"> <input type="submit" value="Trimite Comanda"></a>
+    <a href="~/Client/FinalizeazaComanda" class="buttonModif"> <input type="submit" class="buttonModif" value="Trimite Comanda"></a>
 </form> 
