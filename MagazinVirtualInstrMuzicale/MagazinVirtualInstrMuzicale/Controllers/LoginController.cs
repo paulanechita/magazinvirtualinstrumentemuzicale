@@ -45,7 +45,11 @@ namespace MagazinVirtualInstrMuzicale.Controllers
                     Session["UserRole"] = userRole;
                     return RedirectToAction("Index", "Home");
                 }
-                return View();
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Userul sau parola nu au fost introduse corect.");
+                    return View();
+                }
             }
             return View();
         }
